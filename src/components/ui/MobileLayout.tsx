@@ -1,7 +1,11 @@
 import React from "react";
-import { Rocket, Flame, Menu, File, ChartBar, User } from "lucide-react";
-import { ReactComponent as Info } from "../../assets/info.svg";
-
+import { Rocket, Flame, File, ChartBar, User } from "lucide-react";
+import Info from "../../assets/info.svg?react";
+import Sport from "../../assets/sport.svg?react";
+import Betslip from "../../assets/betslip.svg?react";
+import MyBets from "../../assets/myBets.svg?react";
+import Account from "../../assets/account.svg?react";
+import Menu from "../../assets/menu.svg?react";
 const MobileLayout = () => {
   return (
     <div className="flex flex-col h-screen bg-neutral-darkest">
@@ -51,25 +55,26 @@ const MobileLayout = () => {
       {/* Bottom Navigation */}
       <nav className="bg-neutral-darkest px-4 py-3 grid grid-cols-5 gap-2">
         <button className="flex flex-col items-center gap-1">
-          <Menu size={20} className="text-neutral-light" />
+          <Menu />
           <span className="text-neutral-light body-4">Menu</span>
         </button>
         <button className="flex flex-col items-center gap-1">
           {/* <Football size={20} className="text-neutral-light" /> */}
+          <Sport />
           <span className="text-neutral-light body-4">Sports</span>
         </button>
         <button className="flex flex-col items-center gap-1 relative">
           <div className="absolute -top-6 p-4 rounded-full bg-primary">
-            <File size={24} className="text-neutral-darkest" />
+            <Betslip />
           </div>
           <span className="text-primary body-4 mt-6">Betslip</span>
         </button>
         <button className="flex flex-col items-center gap-1">
-          <ChartBar size={20} className="text-neutral-light" />
+          <MyBets />
           <span className="text-neutral-light body-4">My Bets</span>
         </button>
         <button className="flex flex-col items-center gap-1">
-          <User size={20} className="text-neutral-light" />
+          <Account />
           <span className="text-neutral-light body-4">Account</span>
         </button>
       </nav>
