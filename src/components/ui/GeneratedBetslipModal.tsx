@@ -1,4 +1,3 @@
-
 import React, { useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
@@ -83,11 +82,11 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               <Slider
                 value={[targetSelections]}
                 min={2}
-                max={20}
+                max={1000}
                 step={1}
                 className="flex-1"
                 onValueChange={(value) => onSelectionsChange(value[0])}
-                showThumbValue
+                showThumbValue={false}
               />
               <input
                 type="number"
@@ -126,11 +125,9 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
             </div>
           )}
-          
+
           {error && (
-            <div className="text-red-500 text-center py-8">
-              {error}
-            </div>
+            <div className="text-red-500 text-center py-8">{error}</div>
           )}
 
           {!isLoading && !error && (
