@@ -42,12 +42,12 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
       }}
     >
       <div 
-        className="fixed bottom-0 left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto"
+        className="fixed bottom-[88px] left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto overflow-hidden"
         style={{
-          maxHeight: 'calc(100vh - env(safe-area-inset-bottom))'
+          maxHeight: 'calc(100vh - 88px)',
         }}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full relative">
           <div className="flex items-center justify-between p-4 border-b border-neutral-lighter">
             <div className="w-12 h-1 bg-neutral-lighter rounded-full absolute left-1/2 -translate-x-1/2 -top-3" />
             <h2 className="body-1-bold text-neutral-darkest">Generated Betslip</h2>
@@ -114,17 +114,18 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             ))}
           </div>
 
-          <div className="p-4 border-t border-neutral-lighter bg-white">
-            <Button
-              variant="primary"
-              size="large"
-              title="LOAD BETSLIP"
-              fullwidth
-              onClick={onLoadBetslip}
-            />
-          </div>
+          <div className="sticky bottom-0 left-0 right-0 bg-white">
+            <div className="p-4 border-t border-neutral-lighter">
+              <Button
+                variant="primary"
+                size="large"
+                title="LOAD BETSLIP"
+                fullwidth
+                onClick={onLoadBetslip}
+              />
+            </div>
 
-          <div className="bg-primary p-4">
+            <div className="bg-primary p-4">
             <p className="text-neutral-darkest body-3">
               Add 3 legs to your betslip to earn up to a{" "}
               <span className="body-3-bold">500% Win Bonus.</span>
