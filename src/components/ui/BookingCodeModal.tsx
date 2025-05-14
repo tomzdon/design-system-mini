@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./button";
 import Cross from "../../assets/cross.svg?react";
 
@@ -21,7 +21,7 @@ export const BookingCodeModal: React.FC<BookingCodeModalProps> = ({
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      console.error("Failed to copy text: ", err);
     }
   };
 
