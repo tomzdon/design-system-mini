@@ -13,9 +13,13 @@ export const BookingCodeModal: React.FC<BookingCodeModalProps> = ({
   onClose,
   bookingCode,
 }) => {
+  const [isCopied, setIsCopied] = useState(false);
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(bookingCode);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
@@ -39,7 +43,7 @@ export const BookingCodeModal: React.FC<BookingCodeModalProps> = ({
           <Button
             variant="primary"
             size="large"
-            title="COPY"
+            title={isCopied ? "COPIED" : "COPY"}
             fullwidth
             onClick={handleCopy}
           />
