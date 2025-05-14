@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
 import { ArrowLeft } from "lucide-react";
 import { BaseLayout } from "./ui/BaseLayout";
-
+import { GeneratedBetslipModal } from "../components/ui/GeneratedBetslipModal";
 interface BetslipGeneratorProps {
   onBack: () => void;
 }
@@ -33,7 +33,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       league: "Football / UEFA Europa League",
       market: "Both teams to score - Full Time - Yes",
       odds: 1.73,
-      isHot: true
+      isHot: true,
     },
     // Duplicate for demo
     {
@@ -44,8 +44,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       league: "Football / UEFA Europa League",
       market: "Both teams to score - Full Time - Yes",
       odds: 1.73,
-      isHot: true
-    }
+      isHot: true,
+    },
   ];
 
   return (
