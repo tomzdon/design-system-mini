@@ -33,6 +33,8 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
   onClose,
   targetOdds,
   actualOdds,
+  targetSelections,
+  onSelectionsChange,
   selections,
   isLoading,
   error,
