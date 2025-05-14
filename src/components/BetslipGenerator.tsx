@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -39,17 +38,34 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     setIsLoading(true);
     setError(null);
     try {
+      const query = {
+        queries: [
+          {
+            query: {
+              eventType: "UPCOMING",
+              categories: ["2", "3", "452"],
+              zones: {},
+              boosted: true,
+              hasOdds: true,
+            },
+            skip: 0,
+            take: 100,
+          },
+        ],
+      };
+
+      const encodedQuery = encodeURIComponent(JSON.stringify(query));
+
       const response = await fetch(
-        "/api/sportsbook/v3/events/lists/by-queries?q={\"queries\":[{\"query\":{\"eventType\":\"UPCOMING\",\"categories\":[\"2\",\"3\",\"452\"],\"zones\":{},\"boosted\":true,\"hasOdds\":true},\"skip\":0,\"take\":100}]}",
+        `/api/sportsbook/v3/events/lists/by-queries?q=${encodedQuery}`,
         {
           headers: {
-            "accept": "*/*",
-            "devicetype": "web",
+            accept: "*/*",
+            devicetype: "web",
             "x-pawa-brand": "betpawa-nigeria",
             "x-pawa-language": "en",
-          
-          }
-        }
+          },
+        },
       );
 
       if (!response.ok) {
@@ -63,14 +79,21 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         const selection = market?.selections[0];
 
         return {
-          time: startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          date: startDate.toLocaleDateString([], { weekday: 'short', day: '2-digit', month: '2-digit' }),
+          time: startDate.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          date: startDate.toLocaleDateString([], {
+            weekday: "short",
+            day: "2-digit",
+            month: "2-digit",
+          }),
           homeTeam: event.name.split(" v ")[0],
           awayTeam: event.name.split(" v ")[1],
           league: event.categoryName,
           market: market?.name || "Match Result",
           odds: selection?.odds || 1.0,
-          isHot: true
+          isHot: true,
         };
       });
 
@@ -142,7 +165,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
           />
         </div>
       </div>
-     
+
       <GeneratedBetslipModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
