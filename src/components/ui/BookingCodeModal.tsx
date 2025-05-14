@@ -13,8 +13,12 @@ export const BookingCodeModal: React.FC<BookingCodeModalProps> = ({
   onClose,
   bookingCode,
 }) => {
-  const handleCopy = () => {
-    navigator.clipboard.writeText(bookingCode);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(bookingCode);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
   };
 
   if (!isOpen) return null;
