@@ -104,6 +104,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
           market: market?.marketType?.displayName || "Match Result",
           odds: hotPrice?.price || 1.0,
           isHot: hotPrice?.additionalInfo?.hot || false,
+          marketId: market?.id, // Added marketId
+          selectionId: hotPrice?.selectionId, // Added selectionId
         };
       });
 
@@ -136,7 +138,12 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     setError(null);
 
     try {
-      const selectionIds = selections.slice(0, selectedCount).map((s) => s.id);
+      const selectionIds = selections.slice(0, selectedCount).map(selection => ({
+        marketId: selection.marketId,
+        selectionId: selection.selectionId,
+        odds: selection.odds
+      }));
+
       const response = await fetch(
         "/production/api/sportsbook/v2/booking-number",
         {
@@ -146,9 +153,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
             "content-type": "application/json",
             "x-pawa-brand": "betpawa-nigeria",
           },
-          body: JSON.stringify({ selections: selectionIds }),
-        },
-      );
+          body: JSON.stringify({ selections: selectionIds })
+        });
 
       if (!response.ok) {
         throw new Error("Failed to create booking");
