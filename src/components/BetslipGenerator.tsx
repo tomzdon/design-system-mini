@@ -22,6 +22,32 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     setOdds(value);
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const mockSelections = [
+    {
+      time: "12:00pm",
+      date: "Tue 15/12",
+      homeTeam: "Manchester United",
+      awayTeam: "Athletic Bilbao",
+      league: "Football / UEFA Europa League",
+      market: "Both teams to score - Full Time - Yes",
+      odds: 1.73,
+      isHot: true
+    },
+    // Duplicate for demo
+    {
+      time: "12:00pm",
+      date: "Tue 15/12",
+      homeTeam: "Manchester United",
+      awayTeam: "Athletic Bilbao",
+      league: "Football / UEFA Europa League",
+      market: "Both teams to score - Full Time - Yes",
+      odds: 1.73,
+      isHot: true
+    }
+  ];
+
   return (
     <BaseLayout>
       <div className="flex items-center gap-4 p-4">
@@ -62,10 +88,22 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
             size="large"
             variant="primary"
             title="GENERATE"
-            onClick={() => console.log("Generate with odds:", odds)}
+            onClick={() => setIsModalOpen(true)}
           />
         </div>
       </div>
+
+      <GeneratedBetslipModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        targetOdds={odds}
+        actualOdds={14.18}
+        selections={mockSelections}
+        onLoadBetslip={() => {
+          console.log("Loading betslip...");
+          setIsModalOpen(false);
+        }}
+      />
     </BaseLayout>
   );
 };
