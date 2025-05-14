@@ -113,8 +113,6 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       console.error(err);
     } finally {
       setIsLoading(false);
-    } finally {
-      setIsLoading(false);
     }
   };
 
