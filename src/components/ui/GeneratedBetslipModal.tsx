@@ -126,10 +126,11 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             </div>
 
             <div className="bg-primary p-4">
-            <p className="text-neutral-darkest body-3">
-              Add 3 legs to your betslip to earn up to a{" "}
-              <span className="body-3-bold">500% Win Bonus.</span>
-            </p>
+              <p className="text-neutral-darkest body-3">
+                Add 3 legs to your betslip to earn up to a{" "}
+                <span className="body-3-bold">500% Win Bonus.</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
