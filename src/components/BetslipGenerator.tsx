@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
 import { ArrowLeft } from "lucide-react";
+import { BaseLayout } from "./ui/BaseLayout";
 
-export const BetslipGenerator = () => {
+interface BetslipGeneratorProps {
+  onBack: () => void;
+}
+
+export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({ onBack }) => {
   const [odds, setOdds] = useState(2);
 
   const handleSliderChange = (value: number[]) => {
@@ -17,17 +22,19 @@ export const BetslipGenerator = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-neutral-darkest">
-      {/* Header */}
-      <header className="flex items-center gap-4 p-4 bg-white">
-        <button className="text-neutral-darkest" aria-label="Go back">
+    <BaseLayout>
+      <div className="flex items-center gap-4 p-4">
+        <button 
+          className="text-neutral-darkest" 
+          aria-label="Go back"
+          onClick={onBack}
+        >
           <ArrowLeft size={24} />
         </button>
         <h1 className="body-1-bold text-neutral-darkest">Betslip Generator</h1>
-      </header>
+      </div>
 
-      {/* Content */}
-      <main className="flex-1 bg-white p-4">
+      <div className="p-4">
         <h2 className="text-neutral-darkest body-1-medium mb-6">Target odds</h2>
         
         <div className="flex items-center gap-4 mb-8">
@@ -56,15 +63,7 @@ export const BetslipGenerator = () => {
           fullwidth
           onClick={() => console.log('Generate with odds:', odds)}
         />
-      </main>
-
-      {/* Bottom Banner */}
-      <div className="bg-primary p-1">
-        <p className="text-neutral-darkest body-3">
-          Add 3 legs to your betslip to earn up to a{" "}
-          <span className="body-3-bold">500% Win Bonus.</span>
-        </p>
       </div>
-    </div>
+    </BaseLayout>
   );
 };
