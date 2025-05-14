@@ -1,6 +1,6 @@
 import React from "react";
 import { Rocket, Flame, Menu, File, ChartBar, User } from "lucide-react";
-import Info from "../../assets/info.svg?react";
+import { ReactComponent as Info } from "../../assets/info.svg";
 
 const MobileLayout = () => {
   return (
