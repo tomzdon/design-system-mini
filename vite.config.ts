@@ -16,5 +16,12 @@ export default defineConfig({
     allowedHosts: [
       "9968942d-7f75-4541-93fb-123c05d51eff-00-2losina8gq77g.kirk.replit.dev",
     ],
+    proxy: {
+      '/api/sportsbook': {
+        target: 'https://www.betpawa.ng',
+        changeOrigin: true,
+        secure: false
+      }
+    },
   },
 });

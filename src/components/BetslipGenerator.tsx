@@ -40,7 +40,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     setError(null);
     try {
       const response = await fetch(
-        "https://www.betpawa.ng/api/sportsbook/v3/events/lists/by-queries?q={\"queries\":[{\"query\":{\"eventType\":\"UPCOMING\",\"categories\":[\"2\",\"3\",\"452\"],\"zones\":{},\"boosted\":true,\"hasOdds\":true},\"skip\":0,\"take\":100}]}",
+        "/api/sportsbook/v3/events/lists/by-queries?q={\"queries\":[{\"query\":{\"eventType\":\"UPCOMING\",\"categories\":[\"2\",\"3\",\"452\"],\"zones\":{},\"boosted\":true,\"hasOdds\":true},\"skip\":0,\"take\":100}]}",
         {
           headers: {
             "accept": "*/*",
