@@ -20,6 +20,8 @@ interface GeneratedBetslipModalProps {
   onClose: () => void;
   targetOdds: number;
   actualOdds: number;
+  targetSelections: number;
+  onSelectionsChange: (value: number) => void;
   selections: BetSelection[];
   isLoading: boolean;
   error: string | null;
@@ -76,16 +78,17 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               <div className="flex items-center gap-4 mb-2 rounded-md bg-white shadow-sm py-[8px] px-[12px]">
                 <span className="body-2">2</span>
                 <Slider
-                  value={[targetOdds]}
+                  value={[targetSelections]}
                   min={2}
-                  max={1000}
+                  max={20}
                   step={1}
                   className="flex-1"
-                  readOnly
+                  onValueChange={(value) => onSelectionsChange(value[0])}
+                  showThumbValue
                 />
                 <input
                   type="number"
-                  value={targetOdds}
+                  value={targetSelections}
                   className="w-16 p-1 border border-primary rounded-lg text-center"
                   readOnly
                 />

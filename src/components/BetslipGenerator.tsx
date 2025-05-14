@@ -31,6 +31,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
   const [odds, setOdds] = useState(2);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selections, setSelections] = useState<any[]>([]);
+  const [targetSelections, setTargetSelections] = useState(5);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -171,7 +172,9 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         onClose={() => setIsModalOpen(false)}
         targetOdds={odds}
         actualOdds={14.18}
-        selections={selections}
+        selections={selections.slice(0, targetSelections)}
+        targetSelections={targetSelections}
+        onSelectionsChange={setTargetSelections}
         isLoading={isLoading}
         error={error}
         onLoadBetslip={() => {
