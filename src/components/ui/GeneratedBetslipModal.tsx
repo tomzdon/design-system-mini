@@ -49,11 +49,11 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
       onClick={handleClickAway}
     >
       <div
-        className="fixed bottom-[88px] left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto"
+        className="fixed bottom-[88px] left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto overflow-hidden"
         style={{
-          maxHeight: "calc(100vh - 88px)",
+          maxHeight: "calc(100vh - 88px - 24px)", // Additional 24px for bonus bar
           transform: isOpen ? "translateY(0)" : "translateY(100%)",
-          transition: "transform 300ms ease-in-out",
+          transition: "transform 300ms ease-out",
         }}
       >
         <div className="flex flex-col h-full relative">
@@ -108,7 +108,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-4 space-y-4">
+          <div className="flex-1 overflow-y-auto px-4 space-y-4 pb-[88px]">
             {selections.map((selection, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex items-center justify-between">
