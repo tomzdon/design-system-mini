@@ -121,7 +121,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
                     {selection.odds.toFixed(2)}
                   </span>
                 </div>
-                <div className="body-2-bold">{`${selection.homeTeam} - ${selection.awayTeam}`}</div>
+                <div className="body-1-bold">{`${selection.homeTeam} - ${selection.awayTeam}`}</div>
                 <div className="body-3 text-neutral-medium">
                   {selection.league}
                 </div>

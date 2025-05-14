@@ -184,6 +184,9 @@
     .body-4-bold {
         @apply text-[10px] leading-[14px] font-bold not-italic;
     }
+    .body-large-medium {
+        @apply text-[16px] leading-[24px] font-medium not-italic;
+    }
 }
 
 @layer base {
