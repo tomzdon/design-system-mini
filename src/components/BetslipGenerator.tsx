@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -9,7 +8,9 @@ interface BetslipGeneratorProps {
   onBack: () => void;
 }
 
-export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({ onBack }) => {
+export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
+  onBack,
+}) => {
   const [odds, setOdds] = useState(2);
 
   const handleSliderChange = (value: number[]) => {
@@ -24,8 +25,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({ onBack }) =>
   return (
     <BaseLayout>
       <div className="flex items-center gap-4 p-4">
-        <button 
-          className="text-neutral-darkest" 
+        <button
+          className="text-neutral-darkest"
           aria-label="Go back"
           onClick={onBack}
         >
@@ -34,9 +35,9 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({ onBack }) =>
         <h1 className="body-1-bold text-neutral-darkest">Betslip Generator</h1>
       </div>
 
-      <div className="p-4">
+      <div className="p-4 bg-neutral-lightest">
         <h2 className="text-neutral-darkest body-1-medium mb-6">Target odds</h2>
-        
+
         <div className="flex items-center gap-4 mb-8">
           <span className="body-2">2</span>
           <Slider
@@ -44,7 +45,6 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({ onBack }) =>
             min={2}
             max={1000}
             step={1}
-            showThumbValue
             onValueChange={handleSliderChange}
           />
           <input
@@ -53,16 +53,18 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({ onBack }) =>
             onChange={handleInputChange}
             min={2}
             max={1000}
-            className="w-16 p-2 border border-neutral-lighter rounded-lg text-center"
+            className="w-16 p-2 border border-primary rounded-lg text-center hover:border-primary focus:border-primary focus:outline-none"
           />
         </div>
 
-        <Button 
-          variant="primary"
-          title="GENERATE"
-          fullwidth
-          onClick={() => console.log('Generate with odds:', odds)}
-        />
+        <div className="flex justify-end">
+          <Button
+            size="large"
+            variant="primary"
+            title="GENERATE"
+            onClick={() => console.log("Generate with odds:", odds)}
+          />
+        </div>
       </div>
     </BaseLayout>
   );
