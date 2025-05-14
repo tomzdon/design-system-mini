@@ -1,4 +1,3 @@
-
 import React, { useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
@@ -20,7 +19,7 @@ interface GeneratedBetslipModalProps {
   onClose: () => void;
   targetOdds: number;
   actualOdds: number;
-  targetSelections: number;
+  selectedCount: number;
   onSelectionsChange: (value: number) => void;
   selections: BetSelection[];
   isLoading: boolean;
@@ -33,7 +32,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
   onClose,
   targetOdds,
   actualOdds,
-  targetSelections,
+  selectedCount,
   onSelectionsChange,
   selections,
   isLoading,
@@ -51,7 +50,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
 
   if (!isOpen) return null;
 
-  const displayedSelections = selections.slice(0, targetSelections);
+  const displayedSelections = selections.slice(0, selectedCount);
 
   return (
     <div
@@ -81,19 +80,20 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             <div className="flex items-center gap-4 mb-2 rounded-md bg-white shadow-sm py-[8px] px-[12px]">
               <span className="body-2">2</span>
               <Slider
-                value={[targetSelections]}
+                value={[selectedCount]}
                 min={2}
-                max={20}
+                max={1000}
                 step={1}
                 className="flex-1"
                 onValueChange={(value) => onSelectionsChange(value[0])}
-                showThumbValue
               />
               <input
                 type="number"
-                value={targetSelections}
+                value={selectedCount}
+                onChange={(e) => onSelectionsChange(Math.min(Math.max(Number(e.target.value), 2), 1000))}
                 className="w-16 p-1 border border-primary rounded-lg text-center"
-                readOnly
+                min={2}
+                max={1000}
               />
             </div>
           </div>
@@ -126,11 +126,9 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
             </div>
           )}
-          
+
           {error && (
-            <div className="text-red-500 text-center py-8">
-              {error}
-            </div>
+            <div className="text-red-500 text-center py-8">{error}</div>
           )}
 
           {!isLoading && !error && (

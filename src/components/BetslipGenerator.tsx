@@ -31,7 +31,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
   const [odds, setOdds] = useState(2);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selections, setSelections] = useState<any[]>([]);
-  const [targetSelections, setTargetSelections] = useState(5);
+  const [selectedCount, setSelectedCount] = useState(5);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -143,16 +143,16 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         <div className="flex items-center gap-4 mb-8 rounded-md bg-white shadow-sm py-[8px] px-[12px]">
           <span className="body-2">2</span>
           <Slider
-            value={[odds]}
+            value={[selectedCount]}
             min={2}
             max={1000}
             step={1}
-            onValueChange={handleSliderChange}
+            onValueChange={(value) => setSelectedCount(value[0])}
           />
           <input
             type="number"
-            value={odds}
-            onChange={handleInputChange}
+            value={selectedCount}
+            onChange={(e) => setSelectedCount(Math.min(Math.max(Number(e.target.value), 2), 1000))}
             min={2}
             max={1000}
             className="w-16 p-1 border border-primary rounded-lg text-center hover:border-primary focus:border-primary focus:outline-none"
@@ -175,8 +175,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         targetOdds={odds}
         actualOdds={14.18}
         selections={selections.slice(0, targetSelections)}
-        targetSelections={targetSelections}
-        onSelectionsChange={setTargetSelections}
+        selectedCount={selectedCount}
+        onSelectionsChange={setSelectedCount}
         isLoading={isLoading}
         error={error}
         onLoadBetslip={() => {
