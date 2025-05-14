@@ -1,3 +1,4 @@
+
 import React, { useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
@@ -20,6 +21,8 @@ interface GeneratedBetslipModalProps {
   targetOdds: number;
   actualOdds: number;
   selections: BetSelection[];
+  isLoading: boolean;
+  error: string | null;
   onLoadBetslip: () => void;
 }
 
@@ -29,6 +32,8 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
   targetOdds,
   actualOdds,
   selections,
+  isLoading,
+  error,
   onLoadBetslip,
 }) => {
   const handleClickAway = useCallback(
@@ -44,13 +49,13 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
 
   return (
     <div
-      className="absolute bottom-0 inset-0 bg-black/50 z-50  max-w-[660px]"
+      className="absolute bottom-0 inset-0 bg-black/50 z-50 max-w-[660px]"
       onClick={handleClickAway}
     >
       <div
-        className=" absolute bottom-[0px] left-0 right-0 bg-white rounded-t-lg w-full  mx-auto overflow-hidden"
+        className="absolute bottom-[0px] left-0 right-0 bg-white rounded-t-lg w-full mx-auto overflow-hidden"
         style={{
-          maxHeight: "calc(100vh - 88px - 24px)", // Additional 24px for bonus bar
+          maxHeight: "calc(100vh - 88px - 24px)",
           transform: isOpen ? "translateY(0)" : "translateY(100%)",
           transition: "transform 300ms ease-out",
         }}
@@ -66,7 +71,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             </button>
           </div>
 
-          <div className="  ">
+          <div>
             <div className="bg-neutral-lightest p-4">
               <div className="flex items-center gap-4 mb-2 rounded-md bg-white shadow-sm py-[8px] px-[12px]">
                 <span className="body-2">2</span>
@@ -86,7 +91,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
                 />
               </div>
             </div>
-            <div className="p-4 grid grid-cols-3 text-center border-b border-neutral-lighter ">
+            <div className="p-4 grid grid-cols-3 text-center border-b border-neutral-lighter">
               <div>
                 <div className="small text-neutral-medium">Target odds:</div>
                 <div className="label-medium text-neutral-darkest">
@@ -109,7 +114,19 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
           </div>
 
           <div className="flex-1 overflow-y-auto px-4 space-y-4 pb-[88px]">
-            {selections.map((selection, index) => (
+            {isLoading && (
+              <div className="flex items-center justify-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
+              </div>
+            )}
+            
+            {error && (
+              <div className="text-red-500 text-center py-8">
+                {error}
+              </div>
+            )}
+
+            {!isLoading && !error && selections.map((selection, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -140,6 +157,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               title="LOAD BETSLIP"
               fullwidth
               onClick={onLoadBetslip}
+              disabled={isLoading || !!error}
             />
           </div>
         </div>

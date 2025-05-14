@@ -1,17 +1,93 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
 import { ArrowLeft } from "lucide-react";
 import { BaseLayout } from "./ui/BaseLayout";
 import { GeneratedBetslipModal } from "../components/ui/GeneratedBetslipModal";
+
 interface BetslipGeneratorProps {
   onBack: () => void;
+}
+
+interface ApiEvent {
+  id: string;
+  startDate: string;
+  name: string;
+  categoryName: string;
+  markets: Array<{
+    id: string;
+    name: string;
+    selections: Array<{
+      id: string;
+      name: string;
+      odds: number;
+    }>;
+  }>;
 }
 
 export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
   onBack,
 }) => {
   const [odds, setOdds] = useState(2);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selections, setSelections] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchBoostedEvents = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(
+        "https://www.betpawa.ng/api/sportsbook/v3/events/lists/by-queries?q={\"queries\":[{\"query\":{\"eventType\":\"UPCOMING\",\"categories\":[\"2\",\"3\",\"452\"],\"zones\":{},\"boosted\":true,\"hasOdds\":true},\"skip\":0,\"take\":100}]}",
+        {
+          headers: {
+            "accept": "*/*",
+            "devicetype": "web",
+            "x-pawa-brand": "betpawa-nigeria",
+            "x-pawa-language": "en",
+            "referer": "https://www.betpawa.ng/events/boosted"
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch boosted events");
+      }
+
+      const data = await response.json();
+      const transformedSelections = data.events.map((event: ApiEvent) => {
+        const startDate = new Date(event.startDate);
+        const market = event.markets[0];
+        const selection = market?.selections[0];
+
+        return {
+          time: startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          date: startDate.toLocaleDateString([], { weekday: 'short', day: '2-digit', month: '2-digit' }),
+          homeTeam: event.name.split(" v ")[0],
+          awayTeam: event.name.split(" v ")[1],
+          league: event.categoryName,
+          market: market?.name || "Match Result",
+          odds: selection?.odds || 1.0,
+          isHot: true
+        };
+      });
+
+      setSelections(transformedSelections);
+    } catch (err) {
+      setError("Failed to load boosted matches");
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      fetchBoostedEvents();
+    }
+  }, [isModalOpen]);
 
   const handleSliderChange = (value: number[]) => {
     setOdds(value[0]);
@@ -21,32 +97,6 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     const value = Math.min(Math.max(Number(e.target.value), 2), 1000);
     setOdds(value);
   };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const mockSelections = [
-    {
-      time: "12:00pm",
-      date: "Tue 15/12",
-      homeTeam: "Manchester United",
-      awayTeam: "Athletic Bilbao",
-      league: "Football / UEFA Europa League",
-      market: "Both teams to score - Full Time - Yes",
-      odds: 1.73,
-      isHot: true,
-    },
-    // Duplicate for demo
-    {
-      time: "12:00pm",
-      date: "Tue 15/12",
-      homeTeam: "Manchester United",
-      awayTeam: "Athletic Bilbao",
-      league: "Football / UEFA Europa League",
-      market: "Both teams to score - Full Time - Yes",
-      odds: 1.73,
-      isHot: true,
-    },
-  ];
 
   return (
     <BaseLayout>
@@ -93,17 +143,19 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         </div>
       </div>
      
-        <GeneratedBetslipModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          targetOdds={odds}
-          actualOdds={14.18}
-          selections={mockSelections}
-          onLoadBetslip={() => {
-            console.log("Loading betslip...");
-            setIsModalOpen(false);
-          }}
-        />
+      <GeneratedBetslipModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        targetOdds={odds}
+        actualOdds={14.18}
+        selections={selections}
+        isLoading={isLoading}
+        error={error}
+        onLoadBetslip={() => {
+          console.log("Loading betslip...");
+          setIsModalOpen(false);
+        }}
+      />
     </BaseLayout>
   );
 };
