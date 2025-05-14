@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
 import Cross from "../../assets/cross.svg?react";
@@ -31,19 +32,28 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
   selections,
   onLoadBetslip,
 }) => {
+  const handleClickAway = useCallback(
+    (event: React.MouseEvent) => {
+      if (event.target === event.currentTarget) {
+        onClose();
+      }
+    },
+    [onClose],
+  );
+
   if (!isOpen) return null;
 
   return (
     <div
       className="fixed inset-0 bg-black/50 z-50"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
+      onClick={handleClickAway}
     >
       <div
-        className="fixed bottom-[88px] left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto overflow-hidden"
+        className="fixed bottom-[88px] left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto"
         style={{
           maxHeight: "calc(100vh - 88px)",
+          transform: isOpen ? "translateY(0)" : "translateY(100%)",
+          transition: "transform 300ms ease-in-out",
         }}
       >
         <div className="flex flex-col h-full relative">
@@ -123,16 +133,14 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             ))}
           </div>
 
-          <div className="sticky bottom-0 left-0 right-0 bg-white">
-            <div className="p-4 border-t border-neutral-lighter">
-              <Button
-                variant="primary"
-                size="large"
-                title="LOAD BETSLIP"
-                fullwidth
-                onClick={onLoadBetslip}
-              />
-            </div>
+          <div className="sticky bottom-0 left-0 right-0 bg-white p-4 border-t border-neutral-lighter">
+            <Button
+              variant="primary"
+              size="large"
+              title="LOAD BETSLIP"
+              fullwidth
+              onClick={onLoadBetslip}
+            />
           </div>
         </div>
       </div>
