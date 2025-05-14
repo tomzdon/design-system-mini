@@ -22,6 +22,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      "/production/api/sportsbook": {
+        target: "https://ng.develop.frontend-react-web.verekuu.com",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });

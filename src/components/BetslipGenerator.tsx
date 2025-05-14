@@ -137,7 +137,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
 
     try {
       const selectionIds = selections.slice(0, selectedCount).map(s => s.id);
-      const response = await fetch('https://ng.develop.frontend-react-web.verekuu.com/production/api/sportsbook/v2/booking-number', {
+      const response = await fetch('/production/api/sportsbook/v2/booking-number', {
         method: 'POST',
         headers: {
           'accept': '*/*',
