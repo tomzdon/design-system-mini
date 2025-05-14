@@ -136,19 +136,22 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     setError(null);
 
     try {
-      const selectionIds = selections.slice(0, selectedCount).map(s => s.id);
-      const response = await fetch('/production/api/sportsbook/v2/booking-number', {
-        method: 'POST',
-        headers: {
-          'accept': '*/*',
-          'content-type': 'application/json',
-          'x-pawa-brand': 'betpawa-nigeria'
+      const selectionIds = selections.slice(0, selectedCount).map((s) => s.id);
+      const response = await fetch(
+        "/production/api/sportsbook/v2/booking-number",
+        {
+          method: "POST",
+          headers: {
+            accept: "*/*",
+            "content-type": "application/json",
+            "x-pawa-brand": "betpawa-nigeria",
+          },
+          body: JSON.stringify({ selections: selectionIds }),
         },
-        body: JSON.stringify({ selections: selectionIds })
-      });
+      );
 
       if (!response.ok) {
-        throw new Error('Failed to create booking');
+        throw new Error("Failed to create booking");
       }
 
       const data = await response.json();
@@ -156,7 +159,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       setIsBookingModalOpen(true);
       setIsModalOpen(false);
     } catch (err) {
-      setError('Failed to create booking. Please try again.');
+      setError("Failed to create booking. Please try again.");
       console.error(err);
     } finally {
       setIsLoading(false);
