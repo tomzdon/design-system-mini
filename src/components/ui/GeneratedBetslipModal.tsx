@@ -64,7 +64,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
           transition: "transform 300ms ease-out",
         }}
       >
-        <div className="flex flex-col h-full relative max-h-[80vh]">
+        <div className="flex flex-col h-full relative">
           <div className="flex items-center justify-between p-4 border-b border-neutral-lighter">
             <div className="w-12 h-1 bg-neutral-lighter rounded-full absolute left-1/2 -translate-x-1/2 -top-3" />
             <h2 className="body-1-bold text-neutral-darkest">
@@ -118,7 +118,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             </div>
           </div>
 
-          <div className="overflow-y-auto px-4 space-y-4 pb-[88px]" style={{maxHeight: "calc(80vh - 280px)"}}>
+          <div className="overflow-y-auto px-4 space-y-4 pb-[88px] flex-1">
             {isLoading && (
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
