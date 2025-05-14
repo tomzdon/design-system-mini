@@ -32,8 +32,14 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selections, setSelections] = useState<any[]>([]);
   const [selectedCount, setSelectedCount] = useState(5);
+  const [allEvents, setAllEvents] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const getRandomItems = (items: any[], count: number) => {
+    const shuffled = [...items].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, Math.min(count, items.length));
+  };
 
   const fetchBoostedEvents = async () => {
     setIsLoading(true);
@@ -74,9 +80,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       }
 
       const data = await response.json();
-      // Get all events and shuffle them
-      const shuffledEvents = data.responses[0].responses.sort(() => Math.random() - 0.5);
-      const transformedSelections = shuffledEvents.map((event: any) => {
+      const events = data.responses[0].responses.map((event: any) => {
         const startDate = new Date(event.startTime);
         const market = event.markets[0];
         const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
@@ -100,7 +104,32 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         };
       });
 
-      setSelections(transformedSelections);
+      const transformedEvents = events.map((event: any) => {
+        const startDate = new Date(event.startTime);
+        const market = event.markets[0];
+        const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
+
+        return {
+          time: startDate.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          date: startDate.toLocaleDateString([], {
+            weekday: "short",
+            day: "2-digit",
+            month: "2-digit",
+          }),
+          homeTeam: event.participants[0].name,
+          awayTeam: event.participants[1].name,
+          league: event.competition.name,
+          market: market?.marketType?.displayName || "Match Result",
+          odds: hotPrice?.price || 1.0,
+          isHot: hotPrice?.additionalInfo?.hot || false,
+        };
+      });
+
+      setAllEvents(transformedEvents);
+      setSelections(getRandomItems(transformedEvents, selectedCount));
     } catch (err) {
       setError("Failed to load boosted matches");
       console.error(err);
@@ -147,7 +176,12 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
             min={2}
             max={1000}
             step={1}
-            onValueChange={(value) => setSelectedCount(value[0])}
+            onValueChange={(value) => {
+              setSelectedCount(value[0]);
+              if (allEvents.length > 0) {
+                setSelections(getRandomItems(allEvents, value[0]));
+              }
+            }}
           />
           <input
             type="number"
@@ -174,7 +208,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         onClose={() => setIsModalOpen(false)}
         targetOdds={odds}
         actualOdds={14.18}
-        selections={selections.slice(0, targetSelections)}
+        selections={selections}
         selectedCount={selectedCount}
         onSelectionsChange={setSelectedCount}
         isLoading={isLoading}
