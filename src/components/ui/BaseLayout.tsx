@@ -1,4 +1,3 @@
-
 import React from "react";
 import Menu from "../../assets/menu.svg?react";
 import Sport from "../../assets/sport.svg?react";
@@ -12,16 +11,14 @@ interface BaseLayoutProps {
 
 export const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col h-screen bg-neutral-darkest">
+    <div className="flex flex-col h-screen bg-neutral-darkest max-w-[660px] m-auto">
       {/* Header */}
       <header className="bg-neutral-darkest p-4">
         <img src="/betPawa.svg" alt="betPawa" />
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 bg-white">
-        {children}
-      </main>
+      <main className="flex-1 bg-white relative">{children}</main>
 
       {/* Bottom Banner */}
       <div className="bg-primary p-1">

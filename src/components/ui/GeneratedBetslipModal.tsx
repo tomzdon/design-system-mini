@@ -1,4 +1,3 @@
-
 import React, { useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
@@ -45,11 +44,11 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 z-50"
+      className="absolute bottom-0 inset-0 bg-black/50 z-50  max-w-[660px]"
       onClick={handleClickAway}
     >
       <div
-        className="fixed bottom-[88px] left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto overflow-hidden"
+        className=" absolute bottom-[0px] left-0 right-0 bg-white rounded-t-lg w-full  mx-auto overflow-hidden"
         style={{
           maxHeight: "calc(100vh - 88px - 24px)", // Additional 24px for bonus bar
           transform: isOpen ? "translateY(0)" : "translateY(100%)",
@@ -67,26 +66,27 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             </button>
           </div>
 
-          <div className="p-4">
-            <div className="flex items-center gap-4 mb-6 bg-neutral-lightest rounded-lg p-4">
-              <span className="body-2">2</span>
-              <Slider
-                value={[targetOdds]}
-                min={2}
-                max={1000}
-                step={1}
-                className="flex-1"
-                readOnly
-              />
-              <input
-                type="number"
-                value={targetOdds}
-                className="w-16 p-1 border border-primary rounded-lg text-center"
-                readOnly
-              />
+          <div className="  ">
+            <div className="bg-neutral-lightest p-4">
+              <div className="flex items-center gap-4 mb-2 rounded-md bg-white shadow-sm py-[8px] px-[12px]">
+                <span className="body-2">2</span>
+                <Slider
+                  value={[targetOdds]}
+                  min={2}
+                  max={1000}
+                  step={1}
+                  className="flex-1"
+                  readOnly
+                />
+                <input
+                  type="number"
+                  value={targetOdds}
+                  className="w-16 p-1 border border-primary rounded-lg text-center"
+                  readOnly
+                />
+              </div>
             </div>
-
-            <div className="grid grid-cols-3 text-center border-b border-neutral-lighter pb-4">
+            <div className="p-4 grid grid-cols-3 text-center border-b border-neutral-lighter ">
               <div>
                 <div className="body-3 text-neutral-medium">Target odds:</div>
                 <div className="body-2-bold text-neutral-darkest">

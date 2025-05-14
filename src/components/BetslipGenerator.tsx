@@ -50,7 +50,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
 
   return (
     <BaseLayout>
-      <div className="flex items-center gap-4 p-4">
+      <div className="flex items-center gap-4 p-4 relative">
         <button
           className="text-neutral-darkest"
           aria-label="Go back"
@@ -92,18 +92,18 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
           />
         </div>
       </div>
-
-      <GeneratedBetslipModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        targetOdds={odds}
-        actualOdds={14.18}
-        selections={mockSelections}
-        onLoadBetslip={() => {
-          console.log("Loading betslip...");
-          setIsModalOpen(false);
-        }}
-      />
+     
+        <GeneratedBetslipModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          targetOdds={odds}
+          actualOdds={14.18}
+          selections={mockSelections}
+          onLoadBetslip={() => {
+            console.log("Loading betslip...");
+            setIsModalOpen(false);
+          }}
+        />
     </BaseLayout>
   );
 };
