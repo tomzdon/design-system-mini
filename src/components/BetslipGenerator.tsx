@@ -34,6 +34,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
   const [selectedCount, setSelectedCount] = useState(5);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [bookingCode, setBookingCode] = useState("");
 
   const fetchBoostedEvents = async () => {
     setIsLoading(true);
@@ -129,6 +131,38 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     setOdds(value);
   };
 
+  const handleLoadBetslip = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const selectionIds = selections.slice(0, selectedCount).map(s => s.id);
+      const response = await fetch('https://ng.develop.frontend-react-web.verekuu.com/production/api/sportsbook/v2/booking-number', {
+        method: 'POST',
+        headers: {
+          'accept': '*/*',
+          'content-type': 'application/json',
+          'x-pawa-brand': 'betpawa-nigeria'
+        },
+        body: JSON.stringify({ selections: selectionIds })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create booking');
+      }
+
+      const data = await response.json();
+      setBookingCode(data.code);
+      setIsBookingModalOpen(true);
+      setIsModalOpen(false);
+    } catch (err) {
+      setError('Failed to create booking. Please try again.');
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <BaseLayout>
       <div className="flex items-center gap-4 p-4 relative">
@@ -193,10 +227,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         onSelectionsChange={setSelectedCount}
         isLoading={isLoading}
         error={error}
-        onLoadBetslip={() => {
-          console.log("Loading betslip...");
-          setIsModalOpen(false);
-        }}
+        onLoadBetslip={handleLoadBetslip}
       />
     </BaseLayout>
   );
