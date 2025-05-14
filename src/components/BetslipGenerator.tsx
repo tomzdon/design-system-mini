@@ -83,9 +83,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       const events = data.responses[0].responses.map((event: any) => {
         const startDate = new Date(event.startTime);
         const market = event.markets[0];
-        const selection = market?.selections?.[0];
-        const price = selection?.currentPriceUp / selection?.currentPriceDown || 1.0;
-        const isHot = selection?.boosted || false;
+        const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
 
         return {
           time: startDate.toLocaleTimeString([], {
@@ -101,13 +99,37 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
           awayTeam: event.participants[1].name,
           league: event.competition.name,
           market: market?.marketType?.displayName || "Match Result",
-          odds: price,
-          isHot: isHot,
+          odds: hotPrice?.price || 1.0,
+          isHot: hotPrice?.additionalInfo?.hot || false,
         };
       });
 
-      setAllEvents(events);
-      setSelections(getRandomItems(events, selectedCount));
+      const transformedEvents = events.map((event: any) => {
+        const startDate = new Date(event.startTime);
+        const market = event.markets[0];
+        const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
+
+        return {
+          time: startDate.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          date: startDate.toLocaleDateString([], {
+            weekday: "short",
+            day: "2-digit",
+            month: "2-digit",
+          }),
+          homeTeam: event.participants[0].name,
+          awayTeam: event.participants[1].name,
+          league: event.competition.name,
+          market: market?.marketType?.displayName || "Match Result",
+          odds: hotPrice?.price || 1.0,
+          isHot: hotPrice?.additionalInfo?.hot || false,
+        };
+      });
+
+      setAllEvents(transformedEvents);
+      setSelections(getRandomItems(transformedEvents, selectedCount));
     } catch (err) {
       setError("Failed to load boosted matches");
       console.error(err);
