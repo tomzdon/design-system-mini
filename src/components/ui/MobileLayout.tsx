@@ -6,7 +6,7 @@ import Betslip from "../../assets/betslip.svg?react";
 import MyBets from "../../assets/myBets.svg?react";
 import Account from "../../assets/account.svg?react";
 import Menu from "../../assets/menu.svg?react";
-import { TooltipModal } from "../../components/TooltipModal"; // Assuming the path to TooltipModal
+import { TooltipModal } from "./tooltipModal"; // Assuming the path to TooltipModal
 
 const MobileLayout = () => {
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);

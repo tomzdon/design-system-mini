@@ -1,6 +1,6 @@
-import React, {useCallback} from 'react';
-import {cn} from '@/lib/utils';
-import {useTransitionState} from '@/hooks/useTransitionState';
+import React, { useCallback } from "react";
+import { cn } from "@/lib/utils";
+import { useTransitionState } from "@/hooks/useTransitionState";
 import Cross from "../../assets/cross.svg?react";
 
 const TRANSITION_DURATION = 300;
@@ -14,13 +14,16 @@ interface TooltipModalProps {
 }
 
 export const TooltipModal: React.FC<TooltipModalProps> = ({
-                                                              isOpen,
-                                                              unmountOnClose = true,
-                                                              onCancel,
-                                                              children,
-                                                              className,
-                                                          }) => {
-    const {visible, mounted} = useTransitionState(isOpen, TRANSITION_DURATION);
+    isOpen,
+    unmountOnClose = true,
+    onCancel,
+    children,
+    className,
+}) => {
+    const { visible, mounted } = useTransitionState(
+        isOpen,
+        TRANSITION_DURATION,
+    );
 
     const handleClickAway = useCallback(
         (event: React.MouseEvent) => {
@@ -30,7 +33,7 @@ export const TooltipModal: React.FC<TooltipModalProps> = ({
                 onCancel();
             }
         },
-        [onCancel]
+        [onCancel],
     );
 
     if (unmountOnClose && !mounted) return null;
@@ -38,16 +41,18 @@ export const TooltipModal: React.FC<TooltipModalProps> = ({
     return (
         <div
             className={cn(
-                'absolute top-[30px] left-0 w-full z-[1000] flex items-start justify-center transition-opacity duration-300',
-                visible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
-                className
+                "absolute top-[50px] right-0 w-full z-[1000] flex items-start justify-center transition-opacity duration-300",
+                visible
+                    ? "opacity-100 pointer-events-auto"
+                    : "opacity-0 pointer-events-none",
+                className,
             )}
             onClick={handleClickAway}
         >
             <div
                 className={cn(
-                    'bg-white rounded-lg w-full m-2 p-4 relative shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all duration-300',
-                    visible ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
+                    "bg-white rounded-lg w-full m-2 p-4 relative shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all duration-300",
+                    visible ? "scale-100 opacity-100" : "scale-105 opacity-0",
                 )}
                 role="tooltip"
             >
@@ -56,9 +61,11 @@ export const TooltipModal: React.FC<TooltipModalProps> = ({
                     className="absolute top-0 right-0 p-2 text-[12px] cursor-pointer"
                     aria-label="Close"
                 >
-                    <Cross/>
+                    <Cross />
                 </button>
-                <div className="flex flex-col gap-[6px] my-4 text-center">{children}</div>
+                <div className="flex flex-col gap-[6px] my-4 text-center">
+                    {children}
+                </div>
             </div>
         </div>
     );
