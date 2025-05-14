@@ -1,7 +1,7 @@
 
 import React from "react";
-import { Slider } from "./slider";
 import { Button } from "./button";
+import { Slider } from "./slider";
 import Cross from "../../assets/cross.svg?react";
 
 interface BetSelection {
@@ -36,28 +36,28 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 bg-black/50 z-50 transition-opacity duration-300"
+      className="fixed inset-0 bg-black/50 z-50"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
       <div 
-        className="fixed bottom-0 left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto transition-transform duration-300 transform translate-y-0"
+        className="fixed bottom-0 left-0 right-0 bg-white rounded-t-lg w-full max-w-[480px] mx-auto"
         style={{
           maxHeight: 'calc(100vh - env(safe-area-inset-bottom))'
         }}
       >
-        <div className="space-y-6">
-          <div className="flex items-center justify-between px-4 pt-2">
-            <div className="w-12 h-1 bg-neutral-lighter rounded-full mx-auto mb-4" />
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between p-4 border-b border-neutral-lighter">
+            <div className="w-12 h-1 bg-neutral-lighter rounded-full absolute left-1/2 -translate-x-1/2 -top-3" />
             <h2 className="body-1-bold text-neutral-darkest">Generated Betslip</h2>
             <button onClick={onClose} className="p-2" aria-label="Close">
               <Cross />
             </button>
           </div>
 
-          <div className="px-4">
-            <div className="flex items-center gap-4 py-4 bg-neutral-lightest rounded-lg px-4">
+          <div className="p-4">
+            <div className="flex items-center gap-4 mb-6 bg-neutral-lightest rounded-lg p-4">
               <span className="body-2">2</span>
               <Slider
                 value={[targetOdds]}
@@ -65,6 +65,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
                 max={1000}
                 step={1}
                 className="flex-1"
+                readOnly
               />
               <input
                 type="number"
@@ -74,7 +75,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               />
             </div>
 
-            <div className="grid grid-cols-3 text-center border-b border-neutral-lighter py-4">
+            <div className="grid grid-cols-3 text-center border-b border-neutral-lighter pb-4">
               <div>
                 <div className="body-3 text-neutral-medium">Target odds:</div>
                 <div className="body-2-bold text-neutral-darkest">{targetOdds.toFixed(2)}</div>
@@ -90,22 +91,22 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             </div>
           </div>
 
-          <div className="space-y-4 px-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 400px)' }}>
+          <div className="flex-1 overflow-y-auto px-4 space-y-4">
             {selections.map((selection, index) => (
-              <div key={index} className="space-y-1">
+              <div key={index} className="space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="body-3">{selection.time}</span>
                     <span className="body-3">{selection.date}</span>
                     <span className="text-[#831aed]">⬆</span>
                   </div>
-                  <span className="bg-[#2c2c2c] text-white px-3 py-1 rounded-full body-3">
+                  <span className="bg-neutral-darkest text-white px-3 py-1 rounded-full body-3">
                     {selection.odds.toFixed(2)}
                   </span>
                 </div>
                 <div className="body-2-bold">{`${selection.homeTeam} - ${selection.awayTeam}`}</div>
                 <div className="body-3 text-neutral-medium">{selection.league}</div>
-                <div className="body-2 flex items-center gap-1">
+                <div className="body-2-bold flex items-center gap-1">
                   {selection.market}
                   {selection.isHot && <span>🔥</span>}
                 </div>
@@ -113,7 +114,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             ))}
           </div>
 
-          <div className="px-4 py-4 border-t border-neutral-lighter">
+          <div className="p-4 border-t border-neutral-lighter bg-white">
             <Button
               variant="primary"
               size="large"
@@ -121,6 +122,13 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               fullwidth
               onClick={onLoadBetslip}
             />
+          </div>
+
+          <div className="bg-primary p-4">
+            <p className="text-neutral-darkest body-3">
+              Add 3 legs to your betslip to earn up to a{" "}
+              <span className="body-3-bold">500% Win Bonus.</span>
+            </p>
           </div>
         </div>
       </div>
