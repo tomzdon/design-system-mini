@@ -38,7 +38,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       <div className="p-4 bg-neutral-lightest">
         <h2 className="text-neutral-darkest body-1-medium mb-6">Target odds</h2>
 
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-4 mb-8 rounded-md bg-white shadow-sm py-[8px] px-[12px]">
           <span className="body-2">2</span>
           <Slider
             value={[odds]}
@@ -53,7 +53,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
             onChange={handleInputChange}
             min={2}
             max={1000}
-            className="w-16 p-2 border border-primary rounded-lg text-center hover:border-primary focus:border-primary focus:outline-none"
+            className="w-16 p-1 border border-primary rounded-lg text-center hover:border-primary focus:border-primary focus:outline-none"
           />
         </div>
 

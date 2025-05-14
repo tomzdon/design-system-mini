@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --white: var(--white);
+    --color-white: var(--white);
     --color-secondary: var(--secondary);
 
     --color-neutral-lightest: var(--neutral-lightest);
@@ -40,9 +40,9 @@
 
 :root {
     /* === Neutral === */
-    --white: #f4f5f0;
+    --white: #ffffff;
     --secondary: #f09a82;
-    --neutral-lightest: #e6e7e2;
+    --neutral-lightest: #F4F5F0;
     --neutral-lighter: #d6d7d2;
     --neutral-light: #bdbebc;
     --neutral-medium: #9fa0a0;
@@ -123,66 +123,66 @@
 
     /* === BODY 1 === */
     .body-1 {
-        @apply text-[16px] leading-[22px] font-normal not-italic ;
+        @apply text-[16px] leading-[22px] font-normal not-italic;
     }
 
     .body-1-medium {
-        @apply text-[16px] leading-[22px] font-medium not-italic ;
+        @apply text-[16px] leading-[22px] font-medium not-italic;
     }
 
     .body-1-bold {
-        @apply text-[16px] leading-[22px] font-bold not-italic ;
+        @apply text-[16px] leading-[22px] font-bold not-italic;
     }
 
     /* === BODY 2 === */
     .body-2 {
-        @apply text-[14px] leading-[18px] font-normal not-italic ;
+        @apply text-[14px] leading-[18px] font-normal not-italic;
     }
 
     .body-2-medium {
-        @apply text-[14px] leading-[18px] font-medium not-italic ;
+        @apply text-[14px] leading-[18px] font-medium not-italic;
     }
 
     .body-2-bold {
-        @apply text-[14px] leading-[18px] font-bold not-italic ;
+        @apply text-[14px] leading-[18px] font-bold not-italic;
     }
 
     .body-2-medium-uppercase {
-        @apply text-[14px] leading-[18px] font-medium uppercase not-italic ;
+        @apply text-[14px] leading-[18px] font-medium uppercase not-italic;
     }
 
     .body-2-bold-uppercase {
-        @apply text-[14px] leading-[18px] font-bold uppercase not-italic ;
+        @apply text-[14px] leading-[18px] font-bold uppercase not-italic;
     }
 
     .body-2-italic {
-        @apply text-[14px] leading-[18px] font-normal italic ;
+        @apply text-[14px] leading-[18px] font-normal italic;
     }
 
     /* === BODY 3 === */
     .body-3 {
-        @apply text-[12px] leading-[16px] font-normal not-italic ;
+        @apply text-[12px] leading-[16px] font-normal not-italic;
     }
 
     .body-3-medium {
-        @apply text-[12px] leading-[16px] font-medium not-italic ;
+        @apply text-[12px] leading-[16px] font-medium not-italic;
     }
 
     .body-3-bold {
-        @apply text-[12px] leading-[16px] font-bold not-italic ;
+        @apply text-[12px] leading-[16px] font-bold not-italic;
     }
 
     /* === BODY 4 === */
     .body-4 {
-        @apply text-[10px] leading-[14px] font-normal not-italic ;
+        @apply text-[10px] leading-[14px] font-normal not-italic;
     }
 
     .body-4-medium {
-        @apply text-[10px] leading-[14px] font-medium not-italic ;
+        @apply text-[10px] leading-[14px] font-medium not-italic;
     }
 
     .body-4-bold {
-        @apply text-[10px] leading-[14px] font-bold not-italic ;
+        @apply text-[10px] leading-[14px] font-bold not-italic;
     }
 }
 
@@ -217,5 +217,3 @@
 
 
 }
-
-
