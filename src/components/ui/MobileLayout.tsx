@@ -5,7 +5,6 @@ import Sport from "../../assets/sport.svg?react";
 import Betslip from "../../assets/betslip.svg?react";
 import MyBets from "../../assets/myBets.svg?react";
 import Account from "../../assets/account.svg?react";
-import Menu from "../../assets/menu.svg?react";
 const MobileLayout = () => {
   return (
     <div className="flex flex-col h-screen bg-neutral-darkest">
@@ -64,10 +63,10 @@ const MobileLayout = () => {
           <span className="text-neutral-light body-4">Sports</span>
         </button>
         <button className="flex flex-col items-center gap-1 relative">
-          <div className="absolute -top-6 p-4 rounded-full bg-primary">
-            <Betslip />
+          <div className="absolute -top-6 p-4 rounded-full bg-neutral-darkest ring-2 ring-primary">
+            <Betslip className="text-neutral-medium" />
           </div>
-          <span className="text-primary body-4 mt-6">Betslip</span>
+          <span className="text-neutral-medium body-4 mt-6">Betslip</span>
         </button>
         <button className="flex flex-col items-center gap-1">
           <MyBets />
