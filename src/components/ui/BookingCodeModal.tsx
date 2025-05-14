@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "./button";
 import Cross from "../../assets/cross.svg?react";
@@ -32,7 +31,7 @@ export const BookingCodeModal: React.FC<BookingCodeModalProps> = ({
         <div className="text-center mb-6">
           <p className="text-3xl font-bold tracking-wider">{bookingCode}</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-3">
           <Button
             variant="primary"
             size="large"
