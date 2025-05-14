@@ -82,7 +82,9 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       const transformedSelections = selectedEvents.map((event: any) => {
         const startDate = new Date(event.startTime);
         const market = event.markets[0];
-        const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
+        const hotPrice =
+          market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) ||
+          market?.row[0]?.prices[0];
 
         return {
           time: startDate.toLocaleTimeString([], {
@@ -155,7 +157,11 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
           <input
             type="number"
             value={selectedCount}
-            onChange={(e) => setSelectedCount(Math.min(Math.max(Number(e.target.value), 2), 1000))}
+            onChange={(e) =>
+              setSelectedCount(
+                Math.min(Math.max(Number(e.target.value), 2), 1000),
+              )
+            }
             min={2}
             max={1000}
             className="w-16 p-1 border border-primary rounded-lg text-center hover:border-primary focus:border-primary focus:outline-none"
@@ -179,8 +185,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         actualOdds={Number(
           selections
             .slice(0, selectedCount)
-            .reduce((totalOdds, selection) => totalOdds * selection.odds, 1)
-            .toFixed(2)
+            .reduce((totalOdds, selection) => totalOdds + selection.odds, 0)
+            .toFixed(2),
         )}
         selections={selections.slice(0, selectedCount)}
         selectedCount={selectedCount}
