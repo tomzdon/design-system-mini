@@ -13,14 +13,18 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: [
-      "9968942d-7f75-4541-93fb-123c05d51eff-00-2losina8gq77g.kirk.replit.dev",
-    ],
+    host: '0.0.0.0',
+    port: 5000,
     proxy: {
       "/api/sportsbook": {
         target: "https://www.betpawa.ng",
         changeOrigin: true,
         secure: false,
+        headers: {
+          'devicetype': 'web',
+          'x-pawa-brand': 'betpawa-nigeria',
+          'x-pawa-language': 'en'
+        }
       },
     },
   },
