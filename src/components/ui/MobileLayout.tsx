@@ -1,47 +1,50 @@
-
-import React from 'react';
-import { Info, Rocket, Flame, Menu, Football, File, ChartBar, User } from 'lucide-react';
+import React from "react";
+import { Rocket, Flame, Menu, File, ChartBar, User } from "lucide-react";
+import Info from "../../assets/info.svg?react";
 
 const MobileLayout = () => {
   return (
     <div className="flex flex-col h-screen bg-neutral-darkest">
       {/* Header */}
       <header className="bg-neutral-darkest p-4">
-        <img src="/betPawa.svg" alt="betPawa" className="h-8" />
+        <img src="/betPawa.svg" alt="betPawa" />
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 bg-white p-4">
-        <h1 className="text-neutral-darkest body-1-bold mb-4">Mini AI apps</h1>
+      <main className="flex-1 bg-white">
+        <h1 className="text-neutral-darkest body-1-bold  p-4">Mini AI apps</h1>
 
         {/* Cards */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-neutral-dark rounded-lg">
+          <div className="flex items-center justify-between p-4  border-b border-neutral-lighter ">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-neutral-darker rounded-lg">
+              <div className="p-2 bg-neutral-dark rounded-lg">
                 <Rocket size={24} className="text-white" />
               </div>
-              <span className="text-white body-1-medium">Betslip Generator</span>
+              <span className=" body-1-medium">Betslip Generator</span>
             </div>
-            <Info size={20} className="text-neutral-light" />
+            <Info />
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-primary rounded-lg">
+          <div className="flex items-center justify-between p-4  border-b border-neutral-lighter ">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary-dark rounded-lg">
+              <div className="p-2 bg-primary rounded-lg">
                 <Flame size={24} className="text-white" />
               </div>
-              <span className="text-neutral-darkest body-1-medium">Popular Picks</span>
+              <span className="text-neutral-darkest body-1-medium">
+                Popular Picks
+              </span>
             </div>
-            <Info size={20} className="text-neutral-dark" />
+            <Info />
           </div>
         </div>
       </main>
 
       {/* Bottom Banner */}
-      <div className="bg-primary p-4">
-        <p className="text-neutral-darkest body-2">
-          Add 3 legs to your betslip to earn up to a <span className="body-2-bold">500% Win Bonus.</span>
+      <div className="bg-primary p-1">
+        <p className="text-neutral-darkest body-3">
+          Add 3 legs to your betslip to earn up to a{" "}
+          <span className="body-3-bold">500% Win Bonus.</span>
         </p>
       </div>
 
@@ -52,7 +55,7 @@ const MobileLayout = () => {
           <span className="text-neutral-light body-4">Menu</span>
         </button>
         <button className="flex flex-col items-center gap-1">
-          <Football size={20} className="text-neutral-light" />
+          {/* <Football size={20} className="text-neutral-light" /> */}
           <span className="text-neutral-light body-4">Sports</span>
         </button>
         <button className="flex flex-col items-center gap-1 relative">
