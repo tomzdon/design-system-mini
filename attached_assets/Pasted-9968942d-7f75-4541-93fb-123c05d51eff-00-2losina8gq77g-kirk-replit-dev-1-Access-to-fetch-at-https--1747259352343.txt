@@ -1,0 +1,54 @@
+9968942d-7f75-4541-93fb-123c05d51eff-00-2losina8gq77g.kirk.replit.dev/:1 Access to fetch at 'https://www.betpawa.ng/api/sportsbook/v3/events/lists/by-queries?q={%22queries%22:[{%22query%22:{%22eventType%22:%22UPCOMING%22,%22categories%22:[%222%22,%223%22,%22452%22],%22zones%22:{},%22boosted%22:true,%22hasOdds%22:true},%22skip%22:0,%22take%22:100}]}' from origin 'https://9968942d-7f75-4541-93fb-123c05d51eff-00-2losina8gq77g.kirk.replit.dev' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.Understand this error
+ajaxRequestInterceptor.ps.js:1 
+            
+            
+           GET https://www.betpawa.ng/api/sportsbook/v3/events/lists/by-queries?q={%22queries%22:[{%22query%22:{%22eventType%22:%22UPCOMING%22,%22categories%22:[%222%22,%223%22,%22452%22],%22zones%22:{},%22boosted%22:true,%22hasOdds%22:true},%22skip%22:0,%22take%22:100}]} net::ERR_FAILED
+n @ ajaxRequestInterceptor.ps.js:1
+fetch @ ajaxRequestInterceptor.ps.js:1
+await in fetch
+fetchBoostedEvents @ BetslipGenerator.tsx:42
+(anonymous) @ BetslipGenerator.tsx:88
+react-stack-bottom-frame @ react-dom_client.js?v=5b5a9adf:17478
+runWithFiberInDEV @ react-dom_client.js?v=5b5a9adf:1485
+commitHookEffectListMount @ react-dom_client.js?v=5b5a9adf:8460
+commitHookPassiveMountEffects @ react-dom_client.js?v=5b5a9adf:8518
+commitPassiveMountOnFiber @ react-dom_client.js?v=5b5a9adf:9887
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=5b5a9adf:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=5b5a9adf:9881
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=5b5a9adf:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=5b5a9adf:9984
+recursivelyTraversePassiveMountEffects @ react-dom_client.js?v=5b5a9adf:9868
+commitPassiveMountOnFiber @ react-dom_client.js?v=5b5a9adf:9899
+flushPassiveEffects @ react-dom_client.js?v=5b5a9adf:11302
+flushPendingEffects @ react-dom_client.js?v=5b5a9adf:11276
+flushSpawnedWork @ react-dom_client.js?v=5b5a9adf:11250
+commitRoot @ react-dom_client.js?v=5b5a9adf:11081
+commitRootWhenReady @ react-dom_client.js?v=5b5a9adf:10512
+performWorkOnRoot @ react-dom_client.js?v=5b5a9adf:10457
+performSyncWorkOnRoot @ react-dom_client.js?v=5b5a9adf:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=5b5a9adf:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=5b5a9adf:11558
+(anonymous) @ react-dom_client.js?v=5b5a9adf:11649
+<BetslipGenerator>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=5b5a9adf:250
+App @ App.tsx:13
+react-stack-bottom-frame @ react-dom_client.js?v=5b5a9adf:17424
+renderWithHooksAgain @ react-dom_client.js?v=5b5a9adf:4281
+renderWithHooks @ react-dom_client.js?v=5b5a9adf:4217
+updateFunctionComponent @ react-dom_client.js?v=5b5a9adf:6619
+beginWork @ react-dom_client.js?v=5b5a9adf:7654
+runWithFiberInDEV @ react-dom_client.js?v=5b5a9adf:1485
+performUnitOfWork @ react-dom_client.js?v=5b5a9adf:10868
+workLoopSync @ react-dom_client.js?v=5b5a9adf:10728
+renderRootSync @ react-dom_client.js?v=5b5a9adf:10711
+performWorkOnRoot @ react-dom_client.js?v=5b5a9adf:10330
+performSyncWorkOnRoot @ react-dom_client.js?v=5b5a9adf:11635
+flushSyncWorkAcrossRoots_impl @ react-dom_client.js?v=5b5a9adf:11536
+processRootScheduleInMicrotask @ react-dom_client.js?v=5b5a9adf:11558
+(anonymous) @ react-dom_client.js?v=5b5a9adf:11649
+<App>
+exports.jsxDEV @ react_jsx-dev-runtime.js?v=5b5a9adf:250
+(anonymous) @ main.tsx:8Understand this error
+BetslipGenerator.tsx:80 TypeError: Failed to fetch
+    at n (ajaxRequestInterceptor.ps.js:1:12743)
+    at fetch (ajaxRequestInterceptor.ps.js:1:13796)
