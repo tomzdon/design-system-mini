@@ -143,17 +143,6 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       <div className="p-4 bg-neutral-lightest">
         <h2 className="text-neutral-darkest body-1-medium mb-6">Target odds</h2>
 
-        <div className="flex flex-col gap-2 mb-4">
-          <div className="flex justify-between items-center">
-            <span className="body-2">Selected Events:</span>
-            <span className="body-2-bold">{selectedCount}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="body-2">Total Odds:</span>
-            <span className="body-2-bold">{selections.slice(0, selectedCount).reduce((acc, sel) => acc * sel.odds, 1).toFixed(2)}</span>
-          </div>
-        </div>
-
         <div className="flex items-center gap-4 mb-8 rounded-md bg-white shadow-sm py-[8px] px-[12px]">
           <span className="body-2">2</span>
           <Slider
