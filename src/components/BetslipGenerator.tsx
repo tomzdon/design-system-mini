@@ -47,7 +47,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
             "devicetype": "web",
             "x-pawa-brand": "betpawa-nigeria",
             "x-pawa-language": "en",
-            "referer": "https://www.betpawa.ng/events/boosted"
+          
           }
         }
       );

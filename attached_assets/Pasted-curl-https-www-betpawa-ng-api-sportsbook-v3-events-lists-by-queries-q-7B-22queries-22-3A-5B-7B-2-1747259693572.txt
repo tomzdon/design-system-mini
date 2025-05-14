@@ -1,0 +1,20 @@
+curl 'https://www.betpawa.ng/api/sportsbook/v3/events/lists/by-queries?q=%7B%22queries%22%3A%5B%7B%22query%22%3A%7B%22eventType%22%3A%22UPCOMING%22%2C%22categories%22%3A%5B%222%22%2C%223%22%2C%22452%22%5D%2C%22zones%22%3A%7B%7D%2C%22boosted%22%3Atrue%2C%22hasOdds%22%3Atrue%7D%2C%22skip%22%3A0%2C%22take%22%3A100%7D%5D%7D' \
+  -H 'accept: */*' \
+  -H 'accept-language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7' \
+  -H 'cache-control: no-cache' \
+  -b '_gcl_au=1.1.1093705633.1740377669; _ga=GA1.1.1271974672.1740377669; lang=en; x-pawa-token=698b73dfddc462d3-aaaaefe4e0ffa79c; cf_clearance=LM4h_mXn.uV77_UmoJEmN2YZRoN8cpXUe6_jSzImYSc-1745906854-1.2.1.1-KAxlu13fhkGE5rOv8SYm8repPV84nAmVzqKQfIk18UOMxYatE1fwH8vyZGt20HbFHlIGYd1wNH7ZdbQhywqXJTbFY6xijv3PmSCAvGKF_y5Axs3TbGVooVe_rsr2Rl_Q1Z5e...d2TZuhFOBJ2zYmp24_lJS4AjSUEV2kgb8Yx.._MAsH5XOwknkoozulv1M6rWh8tPJB8CNGho1eKUl9Ugx02NKxN2ZBUmJCBp7_EpAFvyxJ57BwIfZvAA92nKBMt38kKaLuaFi5laF4XjeciU1WGOGirnd7H70Efzh56zQM87mAvLYAJZx20nA4UFC_KK6tLoRe7bumVlo66DEBzKtyYXdRfxG0RlZ1yFvUmk; tracingId=dd783951-89c8-4bb3-9f2c-cf709db9e206; cf_clearance=o24__mSdIHV03nK8LKv51SA3RiWKiBoF3_cxMFiiFfo-1746784692-1.2.1.1-wdolKtGEPW8LrfUSuExeuKVUGkCMbDWz_fNlSMzWCJ8vxl5GfMMx33bZwhFTsDJ.Cuk5F4GalplqFILOgFurpGXfrkk8UiVKj8JvF0XhnS5ux1feEqvA98.3uy36svLJmseKC0TrPXX97Cv2k0QFC8TUExiBeSFRhuGK.XLpaFUoZwQm41skwomRy7X.iFag7rOVTDHoeCZ0ttB4F6VE1OVg9WWJm4Myr2bH0yzTzmVFpFD0w1LQgVqHL3yd4kTH7xYwbBuV5Qo_T7CUOqwezdZrZzOx6kFUn3doJuxKC1h5Qn8sGTezYFL29z9wtJM.TkU5YzJzJSWXUht0uH.KjZkd2bxsuvCLUtXJiBWVg48; __cf_bm=9awogbCnkSNYuABahJqGETY_xPX9IfV6BUeqziXsQyE-1747259126-1.0.1.1-xzIFpkMwUc5XDsnZw_Nrm7ccOkop8h.3q.BkAFbYMNzKd.7INXrCGzIOTHb6.mvP9hs1sDZYAz.BGWnCtT7RJfweIq5aMyaHXZvbEtuBi.U; _ga_81NDDTKQDC=GS2.1.s1747259128$o25$g1$t1747259134$j54$l0$h0' \
+  -H 'devicetype: web' \
+  -H 'pragma: no-cache' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://www.betpawa.ng/events/boosted' \
+  -H 'sec-ch-ua: "Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'traceid: 2a8f3af3-bdb8-4831-9404-606fc5fd4871' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36' \
+  -H 'vuejs: true' \
+  -H 'x-pawa-brand: betpawa-nigeria' \
+  -H 'x-pawa-language: en'
