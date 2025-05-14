@@ -187,6 +187,33 @@
     .body-large-medium {
         @apply text-[16px] leading-[24px] font-medium not-italic;
     }
+
+    /* === SMALL === */
+    .small {
+        @apply text-[12px] leading-[16px] font-normal;
+    }
+
+    .small-medium {
+        @apply text-[12px] leading-[16px] font-medium;
+    }
+
+    .small-bold {
+        @apply text-[12px] leading-[16px] font-bold;
+    }
+
+    /* === MICRO === */
+    .micro {
+        @apply text-[10px] leading-[14px] font-normal;
+    }
+
+    .micro-medium {
+        @apply text-[10px] leading-[14px] font-medium;
+    }
+
+    /* === LABEL === */
+    .label-medium {
+        @apply text-[14px] leading-[20px] font-medium;
+    }
 }
 
 @layer base {

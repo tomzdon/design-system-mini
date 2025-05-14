@@ -88,8 +88,8 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             </div>
             <div className="p-4 grid grid-cols-3 text-center border-b border-neutral-lighter ">
               <div>
-                <div className="body-3 text-neutral-medium">Target odds:</div>
-                <div className="body-2-bold text-neutral-darkest">
+                <div className="small text-neutral-medium">Target odds:</div>
+                <div className="label-medium text-neutral-darkest">
                   {targetOdds.toFixed(2)}
                 </div>
               </div>
