@@ -108,31 +108,11 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
 
       setAllEvents(events);
       setSelections(getRandomItems(events, selectedCount));
-
-        return {
-          time: startDate.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          }),
-          date: startDate.toLocaleDateString([], {
-            weekday: "short",
-            day: "2-digit",
-            month: "2-digit",
-          }),
-          homeTeam: event.participants[0].name,
-          awayTeam: event.participants[1].name,
-          league: event.competition.name,
-          market: market?.marketType?.displayName || "Match Result",
-          odds: hotPrice?.price || 1.0,
-          isHot: hotPrice?.additionalInfo?.hot || false,
-        };
-      });
-
-      setAllEvents(transformedEvents);
-      setSelections(getRandomItems(transformedEvents, selectedCount));
     } catch (err) {
       setError("Failed to load boosted matches");
       console.error(err);
+    } finally {
+      setIsLoading(false);
     } finally {
       setIsLoading(false);
     }
