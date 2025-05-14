@@ -46,9 +46,10 @@ export const TooltipModal: React.FC<TooltipModalProps> = ({
         >
             <div
                 className={cn(
-                    'bg-white max-h-[90vh] w-full m-2 p-4 relative shadow-[0_2px_8px_rgba(0,0,0,0.33)] transition-all duration-300',
+                    'bg-white rounded-lg w-full m-2 p-4 relative shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-all duration-300',
                     visible ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
                 )}
+                role="tooltip"
             >
                 <button
                     onClick={onCancel}

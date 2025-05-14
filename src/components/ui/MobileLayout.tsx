@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Rocket, Flame } from "lucide-react";
 import Info from "../../assets/info.svg?react";
 import Sport from "../../assets/sport.svg?react";
@@ -6,7 +6,11 @@ import Betslip from "../../assets/betslip.svg?react";
 import MyBets from "../../assets/myBets.svg?react";
 import Account from "../../assets/account.svg?react";
 import Menu from "../../assets/menu.svg?react";
+import { TooltipModal } from "../../components/TooltipModal"; // Assuming the path to TooltipModal
+
 const MobileLayout = () => {
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+
   return (
     <div className="flex flex-col h-screen bg-neutral-darkest">
       {/* Header */}
@@ -20,14 +24,28 @@ const MobileLayout = () => {
 
         {/* Cards */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4  border-b border-neutral-lighter ">
+          <div className="flex items-center justify-between p-4 border-b border-neutral-lighter relative">
             <div className="flex items-center gap-3">
               <div className="p-2 bg-neutral-dark rounded-lg">
                 <Rocket size={24} className="text-white" />
               </div>
-              <span className=" body-1-medium">Betslip Generator</span>
+              <span className="body-1-medium">Betslip Generator</span>
             </div>
-            <Info />
+            <button 
+              onClick={() => setIsTooltipOpen(prev => !prev)}
+              aria-label="More information about Betslip Generator"
+            >
+              <Info />
+            </button>
+            <TooltipModal
+              isOpen={isTooltipOpen}
+              onCancel={() => setIsTooltipOpen(false)}
+              className="max-w-[280px]"
+            >
+              <p className="body-2 text-neutral-darkest text-left">
+                Automatically generate your betslip based on selected odds.
+              </p>
+            </TooltipModal>
           </div>
 
           <div className="flex items-center justify-between p-4  border-b border-neutral-lighter ">
