@@ -60,7 +60,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
       <div
         className="absolute bottom-[0px] left-0 right-0 bg-white rounded-t-lg w-full mx-auto flex flex-col"
         style={{
-          height: "90vh",
+          height: "70vh",
           transform: isOpen ? "translateY(0)" : "translateY(100%)",
           transition: "transform 300ms ease-out",
         }}
@@ -90,7 +90,11 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
               <input
                 type="number"
                 value={selectedCount}
-                onChange={(e) => onSelectionsChange(Math.min(Math.max(Number(e.target.value), 2), 1000))}
+                onChange={(e) =>
+                  onSelectionsChange(
+                    Math.min(Math.max(Number(e.target.value), 2), 1000),
+                  )
+                }
                 className="w-16 p-1 border border-primary rounded-lg text-center"
                 min={2}
                 max={1000}
