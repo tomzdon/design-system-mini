@@ -61,7 +61,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
       <div
         className="absolute bottom-[0px] left-0 right-0 bg-white rounded-t-lg w-full mx-auto flex flex-col"
         style={{
-          maxHeight: "calc(100vh - 88px - 24px)",
+          height: "90vh",
           transform: isOpen ? "translateY(0)" : "translateY(100%)",
           transition: "transform 300ms ease-out",
         }}
