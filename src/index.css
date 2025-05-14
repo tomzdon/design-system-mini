@@ -6,7 +6,7 @@
 @theme inline {
     --color-white: var(--white);
     --color-secondary: var(--secondary);
-
+    --color-border: var(--color-border);
     --color-neutral-lightest: var(--neutral-lightest);
     --color-neutral-lighter: var(--neutral-lighter);
     --color-neutral-light: var(--neutral-light);
@@ -41,6 +41,7 @@
 :root {
     /* === Neutral === */
     --white: #ffffff;
+    --color-border: #AAAEB0;
     --secondary: #f09a82;
     --neutral-lightest: #F4F5F0;
     --neutral-lighter: #d6d7d2;
@@ -82,6 +83,7 @@
 .dark {
     /* === Neutral === */
     --white: #202328;
+
     --neutral-lightest: #252a2d;
     --neutral-lighter: #2f3336;
     --neutral-light: #353b40;
@@ -184,6 +186,7 @@
     .body-4-bold {
         @apply text-[10px] leading-[14px] font-bold not-italic;
     }
+
     .body-large-medium {
         @apply text-[16px] leading-[24px] font-medium not-italic;
     }

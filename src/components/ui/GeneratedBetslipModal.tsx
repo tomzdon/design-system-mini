@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
 import Cross from "../../assets/cross.svg?react";
+import Boosted from "../../assets/boosted.svg?react";
 
 interface BetSelection {
   time: string;
@@ -104,20 +105,18 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
 
           <div className="grid grid-cols-3 text-center border-b border-neutral-lighter p-4">
             <div>
-              <div className="small text-neutral-medium">Target odds:</div>
-              <div className="label-medium text-neutral-darkest">
+              <div className="body-3-bold text-neutral-dark">Target odds:</div>
+              <div className="body-3-bold text-neutral-dark">
                 {targetOdds.toFixed(2)}
               </div>
             </div>
-            <div>
-              <div className="body-3 text-neutral-medium">Actual odds:</div>
-              <div className="body-2-bold text-neutral-darkest">
-                {actualOdds}
-              </div>
+            <div className="border-l border-r border-border">
+              <div className="body-3-bold text-neutral-dark">Actual odds:</div>
+              <div className="body-3-bold ext-neutral-dark">{actualOdds}</div>
             </div>
             <div>
-              <div className="body-3 text-neutral-medium">Selections:</div>
-              <div className="body-2-bold text-neutral-darkest">
+              <div className="body-3-bold text-neutral-dark">Selections:</div>
+              <div className="body-3-bold text-neutral-dark">
                 {displayedSelections.length}
               </div>
             </div>
@@ -138,22 +137,22 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
           {!isLoading && !error && (
             <div className="space-y-4 py-4">
               {displayedSelections.map((selection, index) => (
-                <div key={index} className="space-y-2">
+                <div key={index}>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="body-3">{selection.time}</span>
-                      <span className="body-3">{selection.date}</span>
-                      <span className="text-[#831aed]">⬆</span>
+                    <div className="flex items-center gap-2 mb-[6px]">
+                      <span className="body-2">{selection.time}</span>
+                      <span className="body-2-bold">{selection.date}</span>
+                      <Boosted />
                     </div>
-                    <span className="bg-neutral-darkest text-white px-3 py-1 rounded-full body-3">
+                    <span className="bg-neutral-dark text-white px-3 py-1 rounded-full body-3">
                       {selection.odds.toFixed(2)}
                     </span>
                   </div>
-                  <div className="body-1-bold">{`${selection.homeTeam} - ${selection.awayTeam}`}</div>
+                  <div className="body-1-medium">{`${selection.homeTeam} - ${selection.awayTeam}`}</div>
                   <div className="body-3 text-neutral-medium">
                     {selection.league}
                   </div>
-                  <div className="body-2-bold flex items-center gap-1">
+                  <div className="body-2-medium flex items-center gap-1">
                     {selection.market}
                     {selection.isHot && <span>🔥</span>}
                   </div>
