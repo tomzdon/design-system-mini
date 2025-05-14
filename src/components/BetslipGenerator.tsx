@@ -75,8 +75,11 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
 
       const data = await response.json();
       // Get all events and shuffle them
-      const shuffledEvents = data.responses[0].responses.sort(() => Math.random() - 0.5);
-      const transformedSelections = shuffledEvents.map((event: any) => {
+      const allEvents = data.responses[0].responses;
+      const shuffledEvents = [...allEvents].sort(() => Math.random() - 0.5);
+      // Take only the number of events specified by selectedCount
+      const selectedEvents = shuffledEvents.slice(0, selectedCount);
+      const transformedSelections = selectedEvents.map((event: any) => {
         const startDate = new Date(event.startTime);
         const market = event.markets[0];
         const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
@@ -113,7 +116,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
     if (isModalOpen) {
       fetchBoostedEvents();
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, selectedCount]);
 
   const handleSliderChange = (value: number[]) => {
     setOdds(value[0]);
