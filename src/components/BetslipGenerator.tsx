@@ -74,7 +74,9 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       }
 
       const data = await response.json();
-      const transformedSelections = data.responses[0].responses.map((event: any) => {
+      // Get all events and shuffle them
+      const shuffledEvents = data.responses[0].responses.sort(() => Math.random() - 0.5);
+      const transformedSelections = shuffledEvents.map((event: any) => {
         const startDate = new Date(event.startTime);
         const market = event.markets[0];
         const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
