@@ -4,6 +4,7 @@ import { Slider } from "./ui/slider";
 import { ArrowLeft } from "lucide-react";
 import { BaseLayout } from "./ui/BaseLayout";
 import { GeneratedBetslipModal } from "../components/ui/GeneratedBetslipModal";
+import { BookingCodeModal } from "../components/ui/BookingCodeModal";
 
 interface BetslipGeneratorProps {
   onBack: () => void;
@@ -237,6 +238,11 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         isLoading={isLoading}
         error={error}
         onLoadBetslip={handleLoadBetslip}
+      />
+      <BookingCodeModal 
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        bookingCode={bookingCode}
       />
     </BaseLayout>
   );
