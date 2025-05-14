@@ -1,14 +1,8 @@
-import {Button} from "@/components/ui/button.tsx";
+
+import MobileLayout from './components/ui/MobileLayout';
 
 function App() {
-
-    return (
-        <>
-
-
-            <Button variant="secondary" title="Primary" titleClassName={'body-2-bold-uppercase'}/>
-        </>
-    )
+  return <MobileLayout />;
 }
 
-export default App
+export default App;
