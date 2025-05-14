@@ -176,7 +176,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         targetOdds={odds}
-        actualOdds={selections.slice(0, selectedCount).reduce((acc, sel) => acc * sel.odds, 1)}
+        actualOdds={Number(selections.slice(0, selectedCount).reduce((acc, sel) => acc * sel.odds, 1).toFixed(2))}
         selections={selections.slice(0, selectedCount)}
         selectedCount={selectedCount}
         onSelectionsChange={setSelectedCount}

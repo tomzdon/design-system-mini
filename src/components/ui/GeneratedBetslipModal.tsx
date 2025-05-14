@@ -108,7 +108,7 @@ export const GeneratedBetslipModal: React.FC<GeneratedBetslipModalProps> = ({
             <div>
               <div className="body-3 text-neutral-medium">Actual odds:</div>
               <div className="body-2-bold text-neutral-darkest">
-                {actualOdds.toFixed(2)}
+                {actualOdds}
               </div>
             </div>
             <div>
