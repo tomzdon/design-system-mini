@@ -1,10 +1,11 @@
 import React from "react";
-import { Rocket, Flame, File, ChartBar, User } from "lucide-react";
+import { Rocket, Flame } from "lucide-react";
 import Info from "../../assets/info.svg?react";
 import Sport from "../../assets/sport.svg?react";
 import Betslip from "../../assets/betslip.svg?react";
 import MyBets from "../../assets/myBets.svg?react";
 import Account from "../../assets/account.svg?react";
+import Menu from "../../assets/menu.svg?react";
 const MobileLayout = () => {
   return (
     <div className="flex flex-col h-screen bg-neutral-darkest">
@@ -62,11 +63,11 @@ const MobileLayout = () => {
           <Sport />
           <span className="text-neutral-light body-4">Sports</span>
         </button>
-        <button className="flex flex-col items-center gap-1 relative">
-          <div className="absolute -top-6 p-4 rounded-full bg-neutral-darkest ring-2 ring-primary">
-            <Betslip className="text-neutral-medium" />
+        <button className="flex flex-col items-center gap-1 relative z-1">
+          <div className="absolute w-16 h-16 flex flex-col items-center -top-4 p-2 rounded-full bg-neutral-darkest ring-2 ring-neutral-dark">
+            <Betslip className="w-7 h-7" />
+            <span className="text-neutral-light body-4 mt-2">Betslip</span>
           </div>
-          <span className="text-neutral-medium body-4 mt-6">Betslip</span>
         </button>
         <button className="flex flex-col items-center gap-1">
           <MyBets />
