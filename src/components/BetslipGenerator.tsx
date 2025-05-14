@@ -73,10 +73,10 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       }
 
       const data = await response.json();
-      const transformedSelections = data.events.map((event: ApiEvent) => {
-        const startDate = new Date(event.startDate);
+      const transformedSelections = data.responses[0].responses.map((event: any) => {
+        const startDate = new Date(event.startTime);
         const market = event.markets[0];
-        const selection = market?.selections[0];
+        const hotPrice = market?.row[0]?.prices.find((p: any) => p.additionalInfo.hot) || market?.row[0]?.prices[0];
 
         return {
           time: startDate.toLocaleTimeString([], {
@@ -88,12 +88,12 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
             day: "2-digit",
             month: "2-digit",
           }),
-          homeTeam: event.name.split(" v ")[0],
-          awayTeam: event.name.split(" v ")[1],
-          league: event.categoryName,
-          market: market?.name || "Match Result",
-          odds: selection?.odds || 1.0,
-          isHot: true,
+          homeTeam: event.participants[0].name,
+          awayTeam: event.participants[1].name,
+          league: event.competition.name,
+          market: market?.marketType?.displayName || "Match Result",
+          odds: hotPrice?.price || 1.0,
+          isHot: hotPrice?.additionalInfo?.hot || false,
         };
       });
 
