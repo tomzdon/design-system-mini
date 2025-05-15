@@ -8,8 +8,6 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
   addons: [
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-a11y",
     "@storybook/addon-themes", // optional, for light/dark toggle
   ],
   core: {
