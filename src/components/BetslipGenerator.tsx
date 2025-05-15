@@ -229,7 +229,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         actualOdds={Number(
           selections
             .slice(0, selectedCount)
-            .reduce((totalOdds, selection) => totalOdds + selection.odds, 0)
+            .reduce((totalOdds, selection) => totalOdds * selection.odds, 1)
             .toFixed(2),
         )}
         selections={selections.slice(0, selectedCount)}
@@ -239,7 +239,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
         error={error}
         onLoadBetslip={handleLoadBetslip}
       />
-      <BookingCodeModal 
+      <BookingCodeModal
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
         bookingCode={bookingCode}
