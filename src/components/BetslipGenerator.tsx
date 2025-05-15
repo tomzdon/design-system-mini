@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
 import { ArrowLeft } from "lucide-react";
 import { BaseLayout } from "./ui/BaseLayout";
-import { GeneratedBetslipModal } from "../components/ui/GeneratedBetslipModal";
-import { BookingCodeModal } from "../components/ui/BookingCodeModal";
+import { GeneratedResults } from "./ui/GeneratedResults";
+import { BookingCodeModal } from "./ui/BookingCodeModal";
 
 interface BetslipGeneratorProps {
   onBack: () => void;
@@ -30,7 +31,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
   onBack,
 }) => {
   const [odds, setOdds] = useState(2);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const [selections, setSelections] = useState<any[]>([]);
   const [selectedCount, setSelectedCount] = useState(5);
   const [isLoading, setIsLoading] = useState(false);
@@ -77,10 +78,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       }
 
       const data = await response.json();
-      // Get all events and shuffle them
       const allEvents = data.responses[0].responses;
       const shuffledEvents = [...allEvents].sort(() => Math.random() - 0.5);
-      // Take only the number of events specified by selectedCount
       const selectedEvents = shuffledEvents.slice(0, selectedCount);
       const transformedSelections = selectedEvents.map((event: any) => {
         const startDate = new Date(event.startTime);
@@ -106,8 +105,8 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
           odds: hotPrice?.price || 1.0,
           id: hotPrice?.id,
           isHot: hotPrice?.additionalInfo?.hot || false,
-          marketId: market?.id, // Added marketId
-          selectionId: hotPrice?.selectionId, // Added selectionId
+          marketId: market?.id,
+          selectionId: hotPrice?.selectionId,
         };
       });
 
@@ -121,19 +120,10 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
   };
 
   useEffect(() => {
-    if (isModalOpen) {
+    if (showResults) {
       fetchBoostedEvents();
     }
-  }, [isModalOpen, selectedCount]);
-
-  const handleSliderChange = (value: number[]) => {
-    setOdds(value[0]);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Math.min(Math.max(Number(e.target.value), 2), 1000);
-    setOdds(value);
-  };
+  }, [showResults, selectedCount]);
 
   const handleLoadBetslip = async () => {
     setIsLoading(true);
@@ -164,7 +154,6 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
       const data = await response.json();
       setBookingCode(data.code);
       setIsBookingModalOpen(true);
-      setIsModalOpen(false);
     } catch (err) {
       setError("Failed to create booking. Please try again.");
       console.error(err);
@@ -217,28 +206,29 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
             size="large"
             variant="primary"
             title="GENERATE"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => setShowResults(true)}
           />
         </div>
       </div>
 
-      <GeneratedBetslipModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        targetOdds={odds}
-        actualOdds={Number(
-          selections
-            .slice(0, selectedCount)
-            .reduce((totalOdds, selection) => totalOdds * selection.odds, 1)
-            .toFixed(2),
-        )}
-        selections={selections.slice(0, selectedCount)}
-        selectedCount={selectedCount}
-        onSelectionsChange={setSelectedCount}
-        isLoading={isLoading}
-        error={error}
-        onLoadBetslip={handleLoadBetslip}
-      />
+      {showResults && (
+        <GeneratedResults
+          targetOdds={odds}
+          actualOdds={Number(
+            selections
+              .slice(0, selectedCount)
+              .reduce((totalOdds, selection) => totalOdds * selection.odds, 1)
+              .toFixed(2),
+          )}
+          selections={selections.slice(0, selectedCount)}
+          selectedCount={selectedCount}
+          onSelectionsChange={setSelectedCount}
+          isLoading={isLoading}
+          error={error}
+          onLoadBetslip={handleLoadBetslip}
+        />
+      )}
+
       <BookingCodeModal
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
