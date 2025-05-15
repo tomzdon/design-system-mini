@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Rocket, Flame } from "lucide-react";
+
 import Info from "../../assets/info.svg?react";
 import { TooltipModal } from "./tooltipModal";
 import { BaseLayout } from "./BaseLayout";
@@ -8,7 +8,8 @@ import Betslip from "../../assets/betslip.svg?react";
 import MyBets from "../../assets/myBets.svg?react";
 import Account from "../../assets/account.svg?react";
 import Menu from "../../assets/menu.svg?react";
-
+import Rocket from "../../assets/rocket.svg?react";
+import Flame from "../../assets/Flame.svg?react";
 interface MobileLayoutProps {
   onBetslipGeneratorClick: () => void;
 }
@@ -28,7 +29,7 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({
             onClick={onBetslipGeneratorClick}
           >
             <div className="p-4 bg-neutral-dark rounded-lg">
-              <Rocket size={24} className="text-white" />
+              <Rocket />
             </div>
             <span className="body-1-medium">Betslip Generator</span>
           </button>
@@ -52,7 +53,7 @@ const MobileLayout: React.FC<MobileLayoutProps> = ({
         <div className="flex items-center justify-between p-4 border-b border-neutral-lighter">
           <div className="flex items-center gap-3">
             <div className="p-4 bg-primary rounded-lg">
-              <Flame size={24} className="text-white" />
+              <Flame />
             </div>
             <span className="text-neutral-darkest body-1-medium">
               Popular Picks
