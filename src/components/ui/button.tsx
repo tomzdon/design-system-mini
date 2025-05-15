@@ -9,7 +9,7 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                primary: "bg-primary text-neutral-darkest",
+                primary: "bg-primary text-neutral-darker",
                 secondary: "bg-neutral-darkest text-white ",
                 tertiary: "bg-neutral-darkest text-white border border-white",
                 outline:
