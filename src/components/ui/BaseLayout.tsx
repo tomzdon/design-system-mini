@@ -18,7 +18,7 @@ export const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 bg-white relative flex flex-col">{children}</main>
+      <main className="flex-1 bg-white relative overflow-y-auto">{children}</main>
 
       {/* Bottom Banner */}
 

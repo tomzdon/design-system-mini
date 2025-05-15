@@ -35,8 +35,8 @@ export const GeneratedResults: React.FC<GeneratedResultsProps> = ({
   onLoadBetslip,
 }) => {
   return (
-    <div className="flex flex-col bg-white h-full">
-      <div className="grid grid-cols-3 text-center border-b border-neutral-lighter p-4 flex-shrink-0">
+    <div className="flex flex-col bg-white">
+      <div className="grid grid-cols-3 text-center border-b border-neutral-lighter p-4">
         <div>
           <div className="body-3-bold text-neutral-dark">Target odds:</div>
           <div className="body-3-bold text-neutral-dark">
@@ -55,7 +55,7 @@ export const GeneratedResults: React.FC<GeneratedResultsProps> = ({
         </div>
       </div>
 
-      <div className="overflow-y-auto px-4 flex-1">
+      <div className="overflow-y-auto px-4" style={{ maxHeight: "calc(100vh - 400px)" }}>
         {isLoading && (
           <div className="flex items-center justify-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
