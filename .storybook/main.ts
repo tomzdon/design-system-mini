@@ -22,7 +22,10 @@ const config: StorybookConfig = {
     config.server = {
       ...config.server,
       host: "0.0.0.0",
-      allowedHosts: [".replit.dev"],
+      allowedHosts: [
+        ".replit.dev",
+        "design-system-mini-tomekkwlodarczy.replit.app",
+      ],
     };
     return config;
   },
