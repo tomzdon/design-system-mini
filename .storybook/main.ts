@@ -8,7 +8,7 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
   addons: [
     "@storybook/addon-essentials",
-    "@storybook/addon-themes", // optional, for light/dark toggle
+    "@storybook/addon-themes",
   ],
   core: {
     disableTelemetry: true,
