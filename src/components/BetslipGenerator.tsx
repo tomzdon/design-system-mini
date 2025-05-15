@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -164,7 +163,7 @@ export const BetslipGenerator: React.FC<BetslipGeneratorProps> = ({
 
   return (
     <BaseLayout>
-      <div className="flex items-center gap-4 p-4 relative">
+      <div className="flex items-center gap-4 p-4 relative ">
         <button
           className="text-neutral-darkest"
           aria-label="Go back"
