@@ -15,6 +15,7 @@ export default defineConfig({
   server: {
     allowedHosts: [
       "9968942d-7f75-4541-93fb-123c05d51eff-00-2losina8gq77g.kirk.replit.dev",
+      "design-system-mini-tomekkwlodarczy.replit.app",
     ],
     proxy: {
       "/api/sportsbook": {
