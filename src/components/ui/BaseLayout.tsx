@@ -11,14 +11,16 @@ interface BaseLayoutProps {
 
 export const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col h-screen bg-neutral-darkest max-w-[660px] m-auto">
+    <div className="flex flex-col h-screen bg-neutral-darkest max-w-[660px] m-auto relative">
       {/* Header */}
-      <header className="bg-neutral-darkest p-4 ">
-        <img src="/betPawa.svg" alt="betPawa" />
+      <header className="bg-neutral-darkest p-4 fixed top-0 left-0 right-0 z-50">
+        <div className="max-w-[660px] mx-auto">
+          <img src="/betPawa.svg" alt="betPawa" />
+        </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 bg-white relative">{children}</main>
+      <main className="flex-1 bg-white relative mt-[72px]">{children}</main>
 
       {/* Bottom Banner */}
 
