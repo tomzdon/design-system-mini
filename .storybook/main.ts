@@ -18,6 +18,14 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  viteFinal: async (config) => {
+    config.server = {
+      ...config.server,
+      host: "0.0.0.0",
+      allowedHosts: [".replit.dev"],
+    };
+    return config;
+  },
 };
 
 export default config;
