@@ -13,7 +13,7 @@ export const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col h-screen bg-neutral-darkest max-w-[660px] m-auto">
       {/* Header */}
-      <header className="bg-neutral-darkest p-4">
+      <header className="bg-neutral-darkest p-4 ">
         <img src="/betPawa.svg" alt="betPawa" />
       </header>
 
