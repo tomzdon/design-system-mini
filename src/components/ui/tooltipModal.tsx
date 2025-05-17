@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { useTransitionState } from "@/hooks/useTransitionState";
+// @ts-ignore
 import Cross from "../../assets/cross.svg?react";
 
 const TRANSITION_DURATION = 300;

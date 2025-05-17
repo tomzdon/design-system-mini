@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
+// @ts-ignore
 import Info from "../../assets/info.svg?react";
 import { TooltipModal } from "./tooltipModal";
 import { BaseLayout } from "./BaseLayout";
-import Sport from "../../assets/sport.svg?react";
-import Betslip from "../../assets/betslip.svg?react";
-import MyBets from "../../assets/myBets.svg?react";
-import Account from "../../assets/account.svg?react";
-import Menu from "../../assets/menu.svg?react";
+// @ts-ignore
 import Rocket from "../../assets/rocket.svg?react";
+// @ts-ignore
 import Flame from "../../assets/Flame.svg?react";
 interface MobileLayoutProps {
   onBetslipGeneratorClick: () => void;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "./button";
+// @ts-ignore
 import Cross from "../../assets/cross.svg?react";
 
 interface BookingCodeModalProps {

@@ -1,9 +1,15 @@
 import React from "react";
+// @ts-ignore
 import Menu from "../../assets/menu.svg?react";
+// @ts-ignore
 import Sport from "../../assets/sport.svg?react";
+// @ts-ignore
 import Betslip from "../../assets/betslip.svg?react";
+// @ts-ignore
 import MyBets from "../../assets/myBets.svg?react";
+// @ts-ignore
 import Account from "../../assets/account.svg?react";
+// @ts-ignore
 
 interface BaseLayoutProps {
   children: React.ReactNode;
