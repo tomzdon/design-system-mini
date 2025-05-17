@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Button } from "./button";
+//@ts-ignore
 import Boosted from "../../assets/boosted.svg?react";
 
 interface BetSelection {
@@ -28,7 +29,6 @@ interface GeneratedResultsProps {
 export const GeneratedResults: React.FC<GeneratedResultsProps> = ({
   targetOdds,
   actualOdds,
-  selectedCount,
   selections,
   isLoading,
   error,
