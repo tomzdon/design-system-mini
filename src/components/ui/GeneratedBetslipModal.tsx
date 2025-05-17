@@ -1,7 +1,9 @@
 import React, { useCallback } from "react";
 import { Button } from "./button";
 import { Slider } from "./slider";
+// @ts-ignore
 import Cross from "../../assets/cross.svg?react";
+// @ts-ignore
 import Boosted from "../../assets/boosted.svg?react";
 
 interface BetSelection {
