@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import '../node_modules/@awesome.me/kit-41b43ea859/icons/css/custom-icons.css';
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,6 +10,7 @@
     --color-secondary: var(--secondary);
     --color-border: var(--color-border);
     --color-neutral-lightest: var(--neutral-lightest);
+    --color-neutral: var(--neutral);
     --color-neutral-lighter: var(--neutral-lighter);
     --color-neutral-light: var(--neutral-light);
     --color-neutral-medium: var(--neutral-medium);
@@ -44,6 +47,7 @@
     --color-border: #AAAEB0;
     --secondary: #f09a82;
     --neutral-lightest: #F4F5F0;
+    --neutral: #E6E7E2;
     --neutral-lighter: #d6d7d2;
     --neutral-light: #bdbebc;
     --neutral-medium: #9fa0a0;
@@ -227,12 +231,7 @@
         src: url('./fonts/Roboto/Roboto-Regular.ttf') format('truetype');
     }
 
-    @font-face {
-        font-family: 'Roboto';
-        font-style: italic;
-        font-weight: 400;
-        src: url('./fonts/Roboto/Roboto-Italic.ttf') format('truetype');
-    }
+
 
     @font-face {
         font-family: 'Roboto';
