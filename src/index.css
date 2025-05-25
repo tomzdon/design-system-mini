@@ -11,6 +11,7 @@
     --color-muted-foreground: var(--muted-foreground);
     --color-brand-foreground-light: var(--brand-foreground-light);
     --color-primary: var(--primary-500);
+    --color-base-input: var(--base-input);
 
     /* === Neutral === */
     --color-neutral-50: var(--neutral-50);
@@ -106,6 +107,7 @@
     --foreground-light: #18181B;
     --muted-foreground: #71717A;
     --brand-foreground-light: #252A2D;
+    --base-input: #E5E5E5;
     /* === Brand UI / Primary === */
     --primary-50: #f5fddc;
     --primary-100: #e9fbc2;

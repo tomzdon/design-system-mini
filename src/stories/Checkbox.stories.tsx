@@ -1,19 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from './checkbox';
+import { Checkbox } from '../components/ui/checkbox.tsx';
 import React, { useState } from 'react';
 import type { CheckedState } from '@radix-ui/react-checkbox';
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Form/Checkbox',
+  title: 'Components/Checkbox',
   component: Checkbox,
   args: {
     id: 'example',
     label: 'Accept terms and conditions',
+    description: 'This is a checkbox description',
   },
   argTypes: {
     isValid: { control: 'boolean' },
     disabled: { control: 'boolean' },
     error: { control: 'text' },
+    variant: {
+      control: { type: 'select' },
+      options: ['default', 'orange'],
+    },
     onCheckedChange: { action: 'checked changed' },
   },
 };
@@ -40,6 +45,7 @@ export const Default: Story = {
 export const WithError: Story = {
   args: {
     error: 'This field is required',
+    description: undefined,
   },
   render: (args) => <ControlledCheckbox {...args} />,
 };
@@ -54,6 +60,23 @@ export const Disabled: Story = {
 export const Valid: Story = {
   args: {
     isValid: true,
+  },
+  render: (args) => <ControlledCheckbox {...args} />,
+};
+
+export const WithoutDescriptionAndTitle: Story = {
+  args: {
+    description: undefined,
+    label: undefined,
+  },
+  render: (args) => <ControlledCheckbox {...args} />,
+};
+
+export const OrangeVariant: Story = {
+  args: {
+    variant: 'orange',
+    label: 'Subscribe to newsletter',
+    description: 'Orange variant of checkbox',
   },
   render: (args) => <ControlledCheckbox {...args} />,
 };
