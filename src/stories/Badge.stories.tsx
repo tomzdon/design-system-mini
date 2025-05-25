@@ -21,12 +21,7 @@ const meta: Meta<typeof Badge> = {
 export default meta;
 type Story = StoryObj<typeof Badge>
 
-export const Default: Story = {
-  args: {
-    variant: 'default',
-    children: 'Default',
-  },
-};
+
 export const Primary: Story = {
   args: {
     variant: 'primary',
@@ -38,14 +33,14 @@ export const Primary: Story = {
 export const Orange: Story = {
   args: {
     variant: 'orange',
-    children: 'Secondary',
+    children: 'Orange',
   },
 };
 
-export const Destructive: Story = {
+export const Secondary: Story = {
   args: {
-    variant: 'destructive',
-    children: 'Destructive',
+    variant: 'secondary',
+    children: 'Secondary',
   },
 };
 
@@ -63,6 +58,12 @@ export const WithIcons = () => (
       Badge
     </Badge>
     <Badge variant="orange" leftIcon={<ArrowLeft size={16} />} rightIcon={<ArrowRight size={16} />}>
+      Badge
+    </Badge>
+    <Badge variant="secondary" rightIcon={<ArrowRight size={16} />}>
+      Badge
+    </Badge>
+    <Badge variant="outline" leftIcon={<ArrowLeft size={16} />}>
       Badge
     </Badge>
   </div>
