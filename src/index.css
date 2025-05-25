@@ -10,6 +10,7 @@
     --color-foreground-light: var(--foreground-light);
     --color-muted-foreground: var(--muted-foreground);
     --color-brand-foreground-light: var(--brand-foreground-light);
+    --color-primary: var(--primary-500);
 
     /* === Neutral === */
     --color-neutral-50: var(--neutral-50);
